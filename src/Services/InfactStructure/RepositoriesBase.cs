@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
+using MySql.Data;
 
 namespace DegicEducation.Services.InfactStructure
 {
@@ -14,8 +15,8 @@ namespace DegicEducation.Services.InfactStructure
         {
             get
             {
-                string cnn = "";//$"{Startup.Configuration["Database:ConnectionString"]}";
-                return _db;//?? (_db = new MySql.Data.MySqlClient.MySqlConnection(cnn));
+                string cnn = $"{Startup.Configuration["Database:ConnectionString"]}";
+                return _db ?? (_db = new MySql.Data.MySqlClient.MySqlConnection(cnn));
             }
         }
 
