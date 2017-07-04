@@ -28,7 +28,12 @@ namespace DegicEducation.Services.Repository{
             return GetAll("getAllCategory", null);
         }
 
-        public CategoryModel GetCategoryById(int id)
+      public IEnumerable<CategoryModel> GetAllCategoryForPost()
+      {
+         return GetAll("getAllCategoryForPost", null);
+      }
+
+      public CategoryModel GetCategoryById(int id)
         {
             var para = new DynamicParameters();
             para.Add("pId", id, DbType.Int32, ParameterDirection.Input);

@@ -1,4 +1,4 @@
-@model IEnumerable<DegicEducation.Areas.Admin.Models.CategoryViewModel>
+@model IEnumerable<DegicEducation.Areas.Admin.Models.PostViewModel>
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{ 
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -8,10 +8,10 @@
     <div class="dashboard_graph">
         <div class="row x_title">
             <div class="col-md-10">
-                <h2>Danh sach chu de</h2>
+                <h2>Danh sach bai viet</h2>
             </div>
             <div class="col-md-2">
-                <a href="/admin/category/new"><input type="button" class="btn btn-primary" value="Thêm mới" /></a>
+                <a href="/admin/post/new"><input type="button" class="btn btn-primary" value="Thêm mới" /></a>
             </div>
         </div>
         <div class="row">
@@ -20,18 +20,18 @@
                 <thead>
                     <tr>
                         <th>Tên</th>
+                        <th>Chu de</th>
                         <th>Hien thi</th>
-                        <th>Khoa hoc</th>
-                        <th>STT</th>
+                        <th>Trang chu</th>
                         <th></th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
                         <th>Tên</th>
+                        <th>Chu de</th>
                         <th>Hien thi</th>
-                        <th>Khoa hoc</th>
-                        <th>STT</th>
+                        <th>Trang chu</th>
                         <th></th>
                     </tr>
                 </tfoot>
@@ -40,11 +40,11 @@
                     {
                         <tr>
                             <td>@m.Name</td>
+                            <td>@m.CategoryName</td>
                             <td>@m.Activated</td>
-                            <td>@m.ClassType</td>
-                            <td>@m.Orders</td>
+                            <td>@m.HomePage</td>
                             <td style="text-align: right">
-                                <a class="btn btn-primary fa fa-pencil" href="/admin/category/update/@m.Id"></a>
+                                <a class="btn btn-primary fa fa-pencil" href="/admin/post/update/@m.Id"></a>
                                 <a class="btn btn-danger fa fa-trash-o" onclick="del(@m.Id)"></a>
                             </td>
                         </tr>
@@ -63,7 +63,7 @@
         var c = confirm("Bạn có chắc là xoa chủ đề này ?");
             if(c){
                 $.ajax({
-                    url: "/admin/category/delete/" + id,
+                    url: "/admin/post/delete/" + id,
                     type: "DELETE",
                     dataType: 'json',
                     success: function(mess){

@@ -10,5 +10,6 @@ namespace DegicEducation.Services.IRepository{
         bool CheckAlias(string alias);
         CategoryModel GetCategoryById(int id);
         IEnumerable<CategoryModel> GetAllCategory();
+        IEnumerable<CategoryModel> GetAllCategoryForPost();
     }
 }
