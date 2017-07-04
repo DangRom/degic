@@ -1,64 +1,97 @@
-﻿@{ 
-    Layout = "~/Views/Shared/_AdminLayout";
+﻿@model DegicEducation.Areas.Admin.Models.CompanyModel
+@{ 
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 <div class="col-md-12 col-sm-12 col-xs-12">
     <div class="dashboard_graph">
         <div class="row x_title">
             <div class="col-md-6">
-                <h3>Network Activities <small>Graph title sub-title</small></h3>
+                <h2>Thong tin cong ty</h2>
             </div>
-            <div class="col-md-6">
+            <!--<div class="col-md-6">
                 <div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
                     <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
                     <span>December 30, 2014 - January 28, 2015</span> <b class="caret"></b>
                 </div>
-            </div>
+            </div>-->
         </div>
-        <div class="col-md-9 col-sm-9 col-xs-12">
-            <div id="chart_plot_01" class="demo-placeholder"></div>
-        </div>
-        <div class="col-md-3 col-sm-3 col-xs-12 bg-white">
-            <div class="x_title">
-                <h2>Top Campaign Performance</h2>
-                <div class="clearfix"></div>
-            </div>
-            <div class="col-md-12 col-sm-12 col-xs-6">
-                <div>
-                    <p>Facebook Campaign</p>
-                    <div class="">
-                        <div class="progress progress_sm" style="width: 76%;">
-                            <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="80"></div>
-                        </div>
+        <div class="row">
+            <form class="form-horizontal" asp-controller="Company" asp-action="Index" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label for="tencty" class="col-sm-2 control-label">Tên công ty</label>
+                    <div class="col-sm-10">
+                        <input asp-for="Name" class="form-control height-input" id="tencty" placeholder="tên công ty">
+                        <span asp-validation-for="Name" class="text-danger"></span>
                     </div>
                 </div>
-                <div>
-                    <p>Twitter Campaign</p>
-                    <div class="">
-                        <div class="progress progress_sm" style="width: 76%;">
-                            <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="60"></div>
-                        </div>
+                <div class="form-group">
+                    <label for="diachi" class="col-sm-2 control-label">Địa chỉ</label>
+                    <div class="col-sm-10">
+                        <input asp-for="Address" class="form-control height-input" id="diachi" placeholder="dịa chỉ cty">
                     </div>
                 </div>
-            </div>
-            <div class="col-md-12 col-sm-12 col-xs-6">
-                <div>
-                    <p>Conventional Media</p>
-                    <div class="">
-                        <div class="progress progress_sm" style="width: 76%;">
-                            <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="40"></div>
-                        </div>
+                <div class="form-group">
+                    <label for="mst" class="col-sm-2 control-label">Mã số thuế</label>
+                    <div class="col-sm-10">
+                        <input asp-for="TaxCode" class="form-control height-input" id="mst" placeholder="mã số thuế cty">
                     </div>
                 </div>
-                <div>
-                    <p>Bill boards</p>
-                    <div class="">
-                        <div class="progress progress_sm" style="width: 76%;">
-                            <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="50"></div>
-                        </div>
+                <div class="form-group">
+                    <label for="emai" class="col-sm-2 control-label">Email</label>
+                    <div class="col-sm-10">
+                        <input asp-for="Email" class="form-control height-input" id="email" placeholder="email">
                     </div>
                 </div>
-            </div>
+                <div class="form-group">
+                    <label for="phone" class="col-sm-2 control-label">Số điện thoại</label>
+                    <div class="col-sm-10">
+                        <input asp-for="PhoneNumber" class="form-control height-input" id="phone" placeholder="số điện thoại cty">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="hotline" class="col-sm-2 control-label">Hot line</label>
+                    <div class="col-sm-10">
+                        <input asp-for="HotLine" class="form-control height-input" id="hotline" placeholder="số hotline cty">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="hotline" class="col-sm-2 control-label">Google</label>
+                    <div class="col-sm-10">
+                        <input asp-for="HotLine" class="form-control height-input" id="hotline" placeholder="trang google cua cty">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="hotline" class="col-sm-2 control-label">Tweeter</label>
+                    <div class="col-sm-10">
+                        <input asp-for="HotLine" class="form-control height-input" id="hotline" placeholder="trang tweeter cua cty">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="hotline" class="col-sm-2 control-label">Facebook</label>
+                    <div class="col-sm-10">
+                        <input asp-for="HotLine" class="form-control height-input" id="hotline" placeholder="trang facebook cua cty">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="hotline" class="col-sm-2 control-label">Mo ta ngan</label>
+                    <div class="col-sm-10">
+                        <input asp-for="HotLine" class="form-control height-input" id="hotline" placeholder="mo ta ngan ve cty">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="mota" class="col-sm-2 control-label">Ve chung toi</label>
+                    <div class="col-sm-10">
+                        <textarea asp-for="About" class="form-control" id="mota"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-primary">Lưu</button>
+                    </div>
+                </div>
+            </form>
         </div>
         <div class="clearfix"></div>
     </div>

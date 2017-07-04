@@ -1,0 +1,16 @@
+.height-input {
+    height: 25px;
+    padding: inherit
+}
+
+.height-input-button-grid {
+    height: 20px;
+    padding: initial;
+    padding-top: -5px;
+}
+
+.select-text {
+    height: 25px;
+    text-align: center;
+    padding-top: 0.5px
+}
