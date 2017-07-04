@@ -9,11 +9,11 @@ using Dapper;
 namespace DegicEducation.Services.Repository{
     public class CategoryRepository : RepositoriesBase<CategoryModel>, ICategoryRepository
     {
-        public bool CheckName(string name)
+        public bool CheckAlias(string alias)
         {
             var para = new DynamicParameters();
-            para.Add("pName", name, DbType.String, ParameterDirection.Input);
-            return CheckRecord("findCategoryByName", para);
+            para.Add("pAlias", alias, DbType.String, ParameterDirection.Input);
+            return CheckRecord("findCategoryByAlias", para);
         }
 
         public void Delete(int id)
@@ -53,7 +53,7 @@ namespace DegicEducation.Services.Repository{
             para.Add("pName", model.Name, DbType.String, ParameterDirection.Input);
             para.Add("pAlias", model.Alias, DbType.String, ParameterDirection.Input);
             para.Add("pImage", model.Image, DbType.String, ParameterDirection.Input);
-            para.Add("pDescription", model.Description, DbType.String, ParameterDirection.Input);
+            para.Add("pDescriptions", model.Descriptions, DbType.String, ParameterDirection.Input);
             para.Add("pContent", model.Content, DbType.String, ParameterDirection.Input);
             para.Add("pActivated", model.Activated, DbType.Boolean, ParameterDirection.Input);
             para.Add("pClassType", model.ClassType, DbType.Boolean, ParameterDirection.Input);

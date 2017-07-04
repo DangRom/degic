@@ -7,7 +7,7 @@ namespace DegicEducation.Services.IRepository{
         void Insert(CategoryModel model);
         void Update(CategoryModel model);
         void Delete(int id);
-        bool CheckName(string name);
+        bool CheckAlias(string alias);
         CategoryModel GetCategoryById(int id);
         IEnumerable<CategoryModel> GetAllCategory();
     }
