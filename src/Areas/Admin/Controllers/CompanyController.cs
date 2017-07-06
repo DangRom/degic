@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 using DegicEducation.Services.Models;
 using DegicEducation.Services.IRepository;
 using DegicEducation.Areas.Admin.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DegicEducation.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize]    
     public class CompanyController:Controller
     {
         private readonly ICompanyRepository _companyRepo;

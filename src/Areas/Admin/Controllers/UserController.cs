@@ -5,10 +5,12 @@ using System.Threading.Tasks;
 using DegicEducation.Areas.Admin.Models;
 using DegicEducation.Services.IRepository;
 using DegicEducation.Services.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DegicEducation.Areas.Admin.Controllers{
    [Area("Admin")]
+   [Authorize]
     public class UserController : Controller{
        private readonly IUserRepository _userRepo;
        public UserController(IUserRepository userRepo) => _userRepo = userRepo;
@@ -85,7 +87,7 @@ namespace DegicEducation.Areas.Admin.Controllers{
                     var usermodel = new UserModel(){
                         UserName = user.UserName,
                         FullName = user.FullName,
-                        Password = user.Password,
+                        Password = Commons.Seucre.MD5Hash(user.Password),
                         Activated = user.Activated
                     };
                     await Task.Factory.StartNew(() => _userRepo.Update(usermodel));

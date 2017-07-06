@@ -6,10 +6,12 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using DegicEducation.Services.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DegicEducation.Areas.Admin.Controllers{
 
     [Area("Admin")]
+    [Authorize]
     public class SlideController : Controller{
         private readonly ISlideRepository _slideRepo;
         public SlideController(ISlideRepository slideRepo) => _slideRepo = slideRepo;

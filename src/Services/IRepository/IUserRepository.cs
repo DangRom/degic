@@ -10,5 +10,7 @@ namespace DegicEducation.Services.IRepository{
        IEnumerable<UserModel> GetAllUser();
        void Delete(string username);
        bool CheckUsername(string username);
+       bool Login(string username, string password);
+       void ChangePassword(string username, string password);
     }
 }

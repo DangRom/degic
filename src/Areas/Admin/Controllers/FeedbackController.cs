@@ -5,11 +5,13 @@ using System.Threading.Tasks;
 using DegicEducation.Areas.Admin.Models;
 using DegicEducation.Services.IRepository;
 using DegicEducation.Services.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace DegicEducation.Areas.Admin.Controllers{
     [Area("Admin")]
+    [Authorize]
     public class FeedbackController : Controller{
         private readonly ICourseRepository _courseRepo;
         private readonly IFeedbackRepository _feedbackRepo;

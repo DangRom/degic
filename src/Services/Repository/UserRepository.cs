@@ -9,6 +9,14 @@ using System.Collections.Generic;
 namespace DegicEducation.Services.Repository{
    public class UserRepository : RepositoriesBase<UserModel>, IUserRepository
    {
+      public void ChangePassword(string username, string password)
+      {
+         var para = new DynamicParameters();
+         para.Add("pUserName", username, DbType.String, ParameterDirection.Input);
+         para.Add("pPassword", password, DbType.String, ParameterDirection.Input);
+         Execute("changePassword", para);
+      }
+
       public bool CheckUsername(string username)
       {
          var para = new DynamicParameters();
@@ -39,6 +47,14 @@ namespace DegicEducation.Services.Repository{
       {
          var para = GetParams(model);
          Execute("insertUser", para);
+      }
+
+      public bool Login(string username, string password)
+      {
+         var para = new DynamicParameters();
+         para.Add("pUserName", username, DbType.String, ParameterDirection.Input);
+         para.Add("pPassword", password, DbType.String, ParameterDirection.Input);
+         return CheckRecord("login", para);
       }
 
       public void Update(UserModel model)

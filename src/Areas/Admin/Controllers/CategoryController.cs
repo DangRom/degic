@@ -4,10 +4,12 @@ using System.Threading.Tasks;
 using DegicEducation.Areas.Admin.Models;
 using DegicEducation.Services.IRepository;
 using DegicEducation.Services.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DegicEducation.Areas.Admin.Controllers{
    [Area("Admin")]
+   [Authorize]
     public class CategoryController : Controller{
        private readonly ICategoryRepository _categoryRepo;
        public CategoryController(ICategoryRepository categoryRepo) => _categoryRepo = categoryRepo;
