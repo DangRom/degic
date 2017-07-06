@@ -41,8 +41,8 @@
                             <td>@m.FullName</td>
                             <td>@m.Activated</td>
                             <td style="text-align: right">
-                                <a class="btn btn-primary fa fa-pencil" href="/admin/user/update/@m.UserName"></a>
-                                <a class="btn btn-danger fa fa-trash-o" onclick="del(@m.UserName)"></a>
+                                <a class="btn btn-primary fa fa-pencil" href="/admin/user/update/@m.Id"></a>
+                                <a class="btn btn-danger fa fa-trash-o" onclick="del('@m.Id')"></a>
                             </td>
                         </tr>
                     }

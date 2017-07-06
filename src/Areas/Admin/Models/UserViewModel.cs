@@ -2,6 +2,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace DegicEducation.Areas.Admin.Models{
     public class UserViewModel{
+        public string Id { get; set; }
+
        [Required(ErrorMessage = "khong duoc bo trong")]
        [MaxLength(25, ErrorMessage = "khong duoc dai qua 25 ky tu")]
        public string UserName { get; set; }
