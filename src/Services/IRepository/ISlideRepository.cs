@@ -7,7 +7,7 @@ namespace DegicEducation.Services.IRepository{
         void Insert(SlideModel model);
         void Update(SlideModel model);
         void Delete(int id);
-        bool CheckName(string name);
+        bool CheckAlias(string alias);
         SlideModel GetSlideById(int id);
         IEnumerable<SlideModel> GetAllSlide();
     }

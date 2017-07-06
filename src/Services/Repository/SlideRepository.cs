@@ -9,11 +9,11 @@ using Dapper;
 namespace DegicEducation.Services.Repository{
     public class SlideRepository : RepositoriesBase<SlideModel>, ISlideRepository
     {
-        public bool CheckName(string name)
+        public bool CheckAlias(string alias)
         {
             var para = new DynamicParameters();
-            para.Add("pName", name, DbType.String, ParameterDirection.Input);
-            return CheckRecord("findSlideByName", para);
+            para.Add("pAlias", alias, DbType.String, ParameterDirection.Input);
+            return CheckRecord("findSlideByAlias", para);
         }
 
         public void Delete(int id)
@@ -52,6 +52,7 @@ namespace DegicEducation.Services.Repository{
             var para = new DynamicParameters();
             para.Add("pName", model.Name, DbType.String, ParameterDirection.Input);
             para.Add("pAlias", model.Alias, DbType.String, ParameterDirection.Input);
+            para.Add("pImage", model.Image, DbType.String, ParameterDirection.Input);
             para.Add("pButtonViewer", model.ButtonViewer, DbType.Boolean, ParameterDirection.Input);
             para.Add("pLinkViewer", model.LinkViewer, DbType.String, ParameterDirection.Input);
             para.Add("pActivated", model.Activated, DbType.Boolean, ParameterDirection.Input);

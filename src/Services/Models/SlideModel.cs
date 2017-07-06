@@ -3,6 +3,7 @@ namespace DegicEducation.Services.Models{
         public int Id { get; set; }
         public string Name { get; set; }
         public string Alias { get; set; }
+        public string Image { get; set; }
         public bool ButtonViewer { get; set; }
         public string LinkViewer { get; set; }
         public bool Activated { get; set; }

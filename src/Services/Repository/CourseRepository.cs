@@ -9,11 +9,11 @@ using Dapper;
 namespace DegicEducation.Services.Repository{
     public class CourseRepository : RepositoriesBase<CourseModel>, ICourseRepository
     {
-        public bool CheckName(string name)
+        public bool CheckAlias(string alias)
         {
             var para = new DynamicParameters();
-            para.Add("pName", name, DbType.String, ParameterDirection.Input);
-            return CheckRecord("findCourseByName", para);
+            para.Add("pAlias", alias, DbType.String, ParameterDirection.Input);
+            return CheckRecord("findCourseByAlias", para);
         }
 
         public void Delete(int id)

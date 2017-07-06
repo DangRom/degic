@@ -1,4 +1,4 @@
-@model IEnumerable<DegicEducation.Areas.Admin.Models.SlideViewModel>
+@model IEnumerable<DegicEducation.Areas.Admin.Models.UserViewModel>
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{ 
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -8,10 +8,10 @@
     <div class="dashboard_graph">
         <div class="row x_title">
             <div class="col-md-10">
-                <h2>Danh sach slide</h2>
+                <h2>Danh sach user</h2>
             </div>
             <div class="col-md-2">
-                <a href="/admin/slide/new"><input type="button" class="btn btn-primary" value="Thêm mới" /></a>
+                <a href="/admin/user/new"><input type="button" class="btn btn-primary" value="Thêm mới" /></a>
             </div>
         </div>
         <div class="row">
@@ -19,17 +19,17 @@
             <table id="tablesource" class="display" cellspacing="0" width="100%">
                 <thead>
                     <tr>
-                        <th>Tên</th>
-                        <th>Hien thi</th>
-                        <th>Nút Xem</th>
+                        <th>UserName</th>
+                        <th>FullName</th>
+                        <th>kich hoat</th>
                         <th></th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
-                        <th>Tên</th>
-                        <th>Hien thi</th>
-                        <th>Nút Xem</th>
+                        <th>UserName</th>
+                        <th>FullName</th>
+                        <th>kich hoat</th>
                         <th></th>
                     </tr>
                 </tfoot>
@@ -37,12 +37,12 @@
                     @foreach (var m in Model)
                     {
                         <tr>
-                            <td>@m.Name</td>
+                            <td>@m.UserName</td>
+                            <td>@m.FullName</td>
                             <td>@m.Activated</td>
-                            <td>@m.ButtonViewer</td>
                             <td style="text-align: right">
-                                <a class="btn btn-primary fa fa-pencil" href="/admin/slide/update/@m.Id"></a>
-                                <a class="btn btn-danger fa fa-trash-o" onclick="del(@m.Id)"></a>
+                                <a class="btn btn-primary fa fa-pencil" href="/admin/user/update/@m.UserName"></a>
+                                <a class="btn btn-danger fa fa-trash-o" onclick="del(@m.UserName)"></a>
                             </td>
                         </tr>
                     }
@@ -60,7 +60,7 @@
         var c = confirm("Bạn có chắc là xoa chủ đề này ?");
             if(c){
                 $.ajax({
-                    url: "/admin/slide/delete/" + id,
+                    url: "/admin/user/delete/" + id,
                     type: "DELETE",
                     dataType: 'json',
                     success: function(mess){

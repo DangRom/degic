@@ -15,8 +15,6 @@ namespace DegicEducation.Areas.Admin.Models{
         [Required(ErrorMessage = "không dược bỏ trống")]
         [MaxLength(255, ErrorMessage = "không dược dài quá 255 ký tự")]
         public string Image { get; set; }
-
-        [MaxLength(255, ErrorMessage = "không dược dài quá 255 ký tự")]
         public bool ButtonViewer { get; set; }
         public string LinkViewer { get; set; }
         public bool Activated { get; set; }

@@ -7,7 +7,7 @@ namespace DegicEducation.Services.IRepository{
         void Insert(CourseModel model);
         void Update(CourseModel model);
         void Delete(int id);
-        bool CheckName(string name);
+        bool CheckAlias(string alias);
         CourseModel GetCourseById(int id);
         IEnumerable<CourseModel> GetAllCourse();
     }
