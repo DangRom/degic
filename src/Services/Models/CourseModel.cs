@@ -5,7 +5,7 @@ namespace DegicEducation.Services.Models{
         public string Alias { get; set; }
         public string Image { get; set; }
         public string Status { get; set; }
-        public string ShortDescription { get; set; }
+        public string ShortDesciptions { get; set; }
         public string Content { get; set; }
         public bool Activated { get; set; }
     }

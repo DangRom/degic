@@ -48,16 +48,21 @@ namespace DegicEducation.Services.Repository{
             Execute("updateCourse", para);
         }
 
+        public IEnumerable<CourseModel> GetAllCourseForFeedback()
+        {
+            return GetAll("getAllCourseForFeedback", null);
+        }
+
         public DynamicParameters GetParams(CourseModel model){
             var para = new DynamicParameters();
             para.Add("pName", model.Name, DbType.String, ParameterDirection.Input);
             para.Add("pAlias", model.Alias, DbType.String, ParameterDirection.Input);
             para.Add("pImage", model.Image, DbType.String, ParameterDirection.Input);
-            para.Add("pStatus", model.Status, DbType.Boolean, ParameterDirection.Input);
-            para.Add("pShortDescription", model.ShortDescription, DbType.String, ParameterDirection.Input);
+            para.Add("pStatus", model.Status, DbType.String, ParameterDirection.Input);
+            para.Add("pShortDescriptions", model.ShortDesciptions, DbType.String, ParameterDirection.Input);
             para.Add("pContent", model.Content, DbType.String, ParameterDirection.Input);
             para.Add("pActivated", model.Activated, DbType.Boolean, ParameterDirection.Input);
             return para;
         }
-    }
+   }
 }

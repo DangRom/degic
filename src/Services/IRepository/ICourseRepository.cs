@@ -10,5 +10,6 @@ namespace DegicEducation.Services.IRepository{
         bool CheckAlias(string alias);
         CourseModel GetCourseById(int id);
         IEnumerable<CourseModel> GetAllCourse();
+        IEnumerable<CourseModel> GetAllCourseForFeedback();
     }
 }
