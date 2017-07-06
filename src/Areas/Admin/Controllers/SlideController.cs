@@ -52,7 +52,7 @@ namespace DegicEducation.Areas.Admin.Controllers{
                         await Task.Factory.StartNew(() => _slideRepo.Insert(slidemodel));
                         return RedirectToAction("New");
                     }
-                    ModelState.AddModelError("", "hay thu ten khac hoac kiem tra lai dinh danh");
+                    ModelState.AddModelError("", "hãy thử tên khác hoặc kiểm tra lại định danh");
                 }
                 return View();
             }catch(Exception ex){
@@ -65,7 +65,7 @@ namespace DegicEducation.Areas.Admin.Controllers{
             try{
                 var slidemodel = await Task.Factory.StartNew(() => _slideRepo.GetSlideById(id));
                 if(slidemodel == null){
-                    ModelState.AddModelError("", "khong tim thay du lieu");
+                    ModelState.AddModelError("", "không tìm thấy dữ liệu");
                     return View();
                 }
                 var slide = new SlideViewModel(){

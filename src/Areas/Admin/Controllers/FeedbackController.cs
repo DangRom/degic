@@ -82,7 +82,7 @@ namespace DegicEducation.Areas.Admin.Controllers{
                 ViewBag.ListCourse = await Task.Factory.StartNew(() => GetCourses());
                 var feedmodel = _feedbackRepo.GetFeedbackById(id);
                 if(feedmodel == null){
-                    ModelState.AddModelError("","khong tim thay du lieu");
+                    ModelState.AddModelError("","không tìm thấy dữ liệu");
                     return View();
                 }
                 var feed = new FeedbackViewModel(){

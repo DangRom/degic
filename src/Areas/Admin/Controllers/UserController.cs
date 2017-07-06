@@ -40,7 +40,7 @@ namespace DegicEducation.Areas.Admin.Controllers{
            try{
             if(ModelState.IsValid){
                 if(!_userRepo.CheckUsername(user.UserName)){
-                    ModelState.AddModelError("", "hay thu username khac");
+                    ModelState.AddModelError("", "hãy thử tên đăng nhập khác");
                     return View();
                 }
                 user.Password = Commons.Seucre.MD5Hash(user.Password);
@@ -65,7 +65,7 @@ namespace DegicEducation.Areas.Admin.Controllers{
            try{
                 var usermodel = _userRepo.GetUserByUserName(id);
                 if(usermodel == null){
-                    ModelState.AddModelError("", "khong tim thay du lieu");
+                    ModelState.AddModelError("", "không tìm thấy dữ liệu");
                     return View();
                 }
                 var user = new UserViewModel(){

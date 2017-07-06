@@ -8,12 +8,12 @@ namespace DegicEducation.Areas.Admin.Models
 {
     public class LoginViewModel{
 
-        [Required(ErrorMessage = "khong duoc bo trong")]
-        [MaxLengthAttribute(255, ErrorMessage = "khong duoc dai qua 255 ky tu")]
+        [Required(ErrorMessage = "không được bỏ trống")]
+        [MaxLength(100, ErrorMessage = "không được dài quá 255 ký tự")]
         public string UserName { get; set; }
 
         [Required(ErrorMessage = "khong duoc bo trong")]
-        [MaxLengthAttribute(255, ErrorMessage = "khong duoc dai qua 255 ky tu")]        
+        [MaxLengthAttribute(100, ErrorMessage = "khong duoc dai qua 255 ky tu")]        
         public string Password { get; set; }
     }
 }

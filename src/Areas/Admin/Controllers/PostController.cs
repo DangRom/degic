@@ -78,7 +78,7 @@ namespace DegicEducation.Areas.Admin.Controllers{
                   await Task.Factory.StartNew(() => _postRepository.Insert(postmodel));
                   return RedirectToAction("New");
                }
-               ModelState.AddModelError("", "Hay lai thu ten khac hoac kiem tra lai dinh danh.");
+               ModelState.AddModelError("", "hãy thử tên khác hoặc kiểm tra lại định danh");
             }
             return View();
          }catch(Exception ex){
@@ -92,7 +92,7 @@ namespace DegicEducation.Areas.Admin.Controllers{
             ViewBag.ListCategory = await Task.Factory.StartNew(() => GetCategorys());
             var postmodel = _postRepository.GetPostById(id);
             if(postmodel == null){
-               ModelState.AddModelError("", "khong tim thay du lieu");
+               ModelState.AddModelError("", "không tìm thấy dữ liệu");
                return View();
             }
             var post = new PostViewModel(){

@@ -4,19 +4,19 @@ namespace DegicEducation.Areas.Admin.Models{
     public class CategoryViewModel{
       public int Id { get; set; }
 
-      [Required(ErrorMessage = "khong duoc bo trong")]
-      [MaxLength(255, ErrorMessage = "khong duoc dai qua 255 ky tu")]
+      [Required(ErrorMessage = "không được bỏ trống")]
+      [MaxLength(255, ErrorMessage = "không được dài quá 255 ký tự")]
       public string Name { get; set; }
 
-      [Required(ErrorMessage = "khong duoc bo trong")]
-      [MaxLength(255, ErrorMessage = "khong duoc dai qua 255 ky tu")]
+      [Required(ErrorMessage = "không được bỏ trống")]
+      [MaxLength(255, ErrorMessage = "không được dài quá 255 ký tự")]
       public string Alias { get; set; }
 
-      [MaxLength(255, ErrorMessage = "khong duoc dai qua 255 ky tu")]
+      [MaxLength(255, ErrorMessage = "không được dài quá 255 ký tự")]
       public string Image { get; set; }
 
-      [Required(ErrorMessage = "khong duoc bo trong")]
-      [MaxLength(255, ErrorMessage = "khong duoc dai qua 255 ky tu")]
+      [Required(ErrorMessage = "không được bỏ trống")]
+      [MaxLength(255, ErrorMessage = "không được dài quá 255 ký tự")]
       public string Description { get; set; }
       public string Content { get; set; }
       public bool Activated { get; set; }

@@ -4,12 +4,12 @@ namespace DegicEducation.Areas.Admin.Models{
     public class CourseViewModel{
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "không dược bỏ trống")]
-        [MaxLength(255, ErrorMessage = "không dược dài quá 255 ký tự")]
+        [Required(ErrorMessage = "không được bỏ trống")]
+        [MaxLength(255, ErrorMessage = "không được dài quá 255 ký tự")]
         public string Name { get; set; }
 
-        [Required(ErrorMessage = "không dược bỏ trống")]
-        [MaxLength(255, ErrorMessage = "không dược dài quá 255 ký tự")]
+        [Required(ErrorMessage = "không được bỏ trống")]
+        [MaxLength(255, ErrorMessage = "không được dài quá 255 ký tự")]
         public string Alias { get; set; }
 
         [Required(ErrorMessage = "không dược bỏ trống")]
