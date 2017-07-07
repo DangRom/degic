@@ -1,0 +1,76 @@
+@model IEnumerable<DegicEducation.Areas.Admin.Models.ImageViewModel>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{ 
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="dashboard_graph">
+        <div class="row x_title">
+            <div class="col-md-10">
+                <h2>Danh sách feedback</h2>
+            </div>
+            <div class="col-md-2">
+                <a href="/admin/image/new"><input type="button" class="btn btn-primary" value="Thêm mới" /></a>
+            </div>
+        </div>
+        <div class="row">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <table id="tablesource" class="display" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th>Tên</th>
+                        <th>Gallery</th>
+                        <th>Khách hàng</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr> 
+                        <th>Tên</th>
+                        <th>Gallery</th>
+                        <th>Khách hàng</th>
+                        <th></th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    @foreach (var m in Model)
+                    {
+                        <tr>
+                            <td>@m.iName</td>
+                            <td>@m.iGallery</td>
+                            <td>@m.iCustomer</td>
+                            <td style="text-align: right">
+                                <a class="btn btn-primary fa fa-pencil" href="/admin/image/update/@m.Id"></a>
+                                <a class="btn btn-danger fa fa-trash-o" onclick="del(@m.Id)"></a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+    <br /><br />
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+        function del(id){
+        var c = confirm("Bạn có chắc là xoa chủ đề này ?");
+            if(c){
+                $.ajax({
+                    url: "/admin/image/delete/" + id,
+                    type: "DELETE",
+                    dataType: 'json',
+                    success: function(mess){
+                        window.location.reload();
+                    },
+                    error: function(error){
+                        alert(error);
+                    }
+                })
+            }
+        };
+    </script>
+}

@@ -12,6 +12,7 @@ namespace DegicEducation.Commons{
             service.AddSingleton<ISlideRepository, SlideRepository>();
             service.AddSingleton<IPostRepository, PostRepository>();
             service.AddSingleton<IUserRepository, UserRepository>();
+            service.AddSingleton<IImageRepository, ImageRepository>();
         }
     }
 }
