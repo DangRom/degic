@@ -41,6 +41,13 @@
                   </div>
                 </div>
                 <div class="form-group">
+                    <label for="txtprice" class="col-sm-2 control-label">Giá</label>
+                    <div class="col-sm-3">
+                        <input asp-for="Price" class="form-control height-input" id="txtprice">
+                        <span asp-validation-for="Price" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
                     <label for="status" class="col-sm-2 control-label">Trạng thái</label>
                     <div class="col-sm-3">
                         <input asp-for="Status" class="form-control height-input" id="status">

@@ -19,6 +19,9 @@ namespace DegicEducation.Areas.Admin.Models{
         [Required(ErrorMessage = "không dược bỏ trống")]
         [MaxLength(255, ErrorMessage = "không dược dài quá 255 ký tự")]
         public string Status { get; set; }
+
+        [RegularExpression("([0-9]+)", ErrorMessage = "chỉ được nhập ký tự số.")]
+        public int Price { get; set; }
         public string ShortDescription { get; set; }
         public string Content { get; set; }
         public bool Activated { get; set; }
