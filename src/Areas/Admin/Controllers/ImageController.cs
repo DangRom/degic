@@ -4,10 +4,12 @@ using System.Threading.Tasks;
 using DegicEducation.Areas.Admin.Models;
 using DegicEducation.Services.IRepository;
 using DegicEducation.Services.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DegicEducation.Areas.Admin.Controllers{
     [Area("Admin")]
+    [Authorize]
     public class ImageController : Controller{
        private readonly IImageRepository _imageRepo;
        public ImageController(IImageRepository imageRepo) => _imageRepo = imageRepo;
