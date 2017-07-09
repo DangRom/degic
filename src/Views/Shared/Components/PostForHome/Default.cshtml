@@ -1,0 +1,48 @@
+@model IEnumerable<DegicEducation.Models.PostViewModel>
+
+<section id="blog" class="bg-lighter">
+                <div class="container">
+                    <div class="section-title mb-10">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h2 class="mt-0 text-uppercase font-28 line-bottom line-height-1"><span class="text-theme-color-2 font-weight-400">BÀI VIẾT</span></h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section-content">
+                        <div class="row">
+                           @foreach(var p in Model)
+                           {
+                               var plink = "/bai-viet/" + @p.Alias;
+                              <div class="col-xs-12 col-sm-6 col-md-4 wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.3s">
+                                 <article class="post clearfix mb-sm-30">
+                                       <div class="entry-header">
+                                          <div class="post-thumb thumb">
+                                             <a href="@plink"><img src="@p.Image" alt="" class="img-responsive img-fullwidth"></a>
+                                          </div>
+                                       </div>
+                                       <div class="entry-content p-20 pr-10 bg-white">
+                                          <div class="entry-meta media mt-0 no-bg no-border">
+                                             <div class="entry-date media-left text-center flip bg-theme-colored pt-5 pr-15 pb-5 pl-15">
+                                                   <ul>
+                                                      <li class="font-16 text-white font-weight-600 border-bottom">@p.CreateDay</li>
+                                                      <li class="font-12 text-white text-uppercase">@p.CreateMonth</li>
+                                                   </ul>
+                                             </div>
+                                             <div class="media-body pl-15">
+                                                   <div class="event-content pull-left flip">
+                                                      <h4 class="entry-title text-white text-uppercase m-0 mt-5"><a href="@plink">@p.Name</a></h4>
+                                                   </div>
+                                             </div>
+                                          </div>
+                                          <p class="mt-10">@p.ShortDescriptions</p>
+                                          <a href="@plink" class="btn-read-more">xem thêm</a>
+                                          <div class="clearfix"></div>
+                                       </div>
+                                 </article>
+                              </div>
+                           }
+                        </div>
+                    </div>
+                </div>
+            </section>

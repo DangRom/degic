@@ -28,7 +28,12 @@ namespace DegicEducation.Services.Repository{
             return GetAll("getAllSlide", null);
         }
 
-        public SlideModel GetSlideById(int id)
+      public IEnumerable<SlideModel> GetAllSlideForHome()
+      {
+         return GetAll("getAllSlideForHome", null);
+      }
+
+      public SlideModel GetSlideById(int id)
         {
             var para = new DynamicParameters();
             para.Add("pId", id, DbType.Int32, ParameterDirection.Input);

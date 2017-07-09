@@ -11,5 +11,6 @@ namespace DegicEducation.Services.IRepository{
         CategoryModel GetCategoryById(int id);
         IEnumerable<CategoryModel> GetAllCategory();
         IEnumerable<CategoryModel> GetAllCategoryForPost();
+        IEnumerable<CategoryModel> GetCategoryForMenuHead();
     }
 }

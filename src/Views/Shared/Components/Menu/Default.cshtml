@@ -1,0 +1,59 @@
+@model DegicEducation.Models.MenuViewModel
+
+
+ <div class="header-nav">
+                <div class="header-nav-wrapper navbar-scrolltofixed bg-theme-colored border-bottom-theme-color-2-1px">
+                    <div class="container">
+                        <nav id="menuzord" class="menuzord bg-theme-colored pull-left flip menuzord-responsive">
+                            <ul class="menuzord-menu">
+                               <li class="active"><a href="/">Trang chủ</a></li>
+                               @foreach(var h in Model.MenuHead)
+                               {
+                                  var lines = Model.MenuLine.Where(l => l.HeadId == h.Id).ToList();
+                                  if(lines.Count == 0)
+                                  {
+                                       var hlink = "/" + @h.Alias;
+                                       <li><a href="@hlink">@h.Name</a></li>
+                                  }
+                                  else
+                                  {
+                                       var hlink = "/danh-sach/" + @h.Alias;
+                                       <li><a href="@hlink">@h.Name</a>
+                                             <ul class="dropdown">
+                                                @foreach(var l in lines)
+                                                {
+                                                   var llink = "";
+                                                   if(h.ClassType == true)
+                                                   {
+                                                      llink = "/khoa-hoc/" + l.Alias;
+                                                   }
+                                                   else
+                                                   {
+                                                      llink = "/bai-viet/" + l.Alias;
+                                                   }
+                                                   <li><a href="@llink">@l.Name</a></li>
+                                                }
+                                             </ul>
+                                       </li>
+                                  }
+                               }
+                            </ul>
+                            <ul class="pull-right flip hidden-sm hidden-xs">
+                                <li>
+                                    <!-- Modal: Book Now Starts -->
+                                    <a class="btn btn-colored btn-flat bg-theme-color-2 text-white font-14 bs-modal-ajax-load mt-0 p-25 pr-15 pl-15" data-toggle="modal" data-target="#BSParentModal" href="ajax-load/reservation-form.html"></a>
+                                    <!-- Modal: Book Now End -->
+                                </li>
+                            </ul>
+                            <div id="top-search-bar" class="collapse">
+                                <div class="container">
+                                    <form role="search" action="#" class="search_form_top" method="get">
+                                        <input type="text" placeholder="Type text and press Enter..." name="s" class="form-control" autocomplete="off">
+                                        <span class="search-close"><i class="fa fa-search"></i></span>
+                                    </form>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>

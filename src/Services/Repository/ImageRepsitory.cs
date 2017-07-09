@@ -16,9 +16,19 @@ namespace DegicEducation.Services.Repository{
          Execute("deleteImage", para);
       }
 
+      public IEnumerable<ImageModel> GetAllCustomerForHomePage()
+      {
+         return GetAll("getAllCustomer", null);
+      }
+
       public IEnumerable<ImageModel> GetAllImage()
       {
          return GetAll("getAllImage", null);
+      }
+
+      public IEnumerable<ImageModel> GetAllImageForHomePage()
+      {
+         return GetAll("getAllGallery", null);
       }
 
       public ImageModel GetImageById(int id)

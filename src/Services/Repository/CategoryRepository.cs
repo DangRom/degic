@@ -40,7 +40,12 @@ namespace DegicEducation.Services.Repository{
             return GetById("getCategoryById", para);
         }
 
-        public void Insert(CategoryModel model)
+      public IEnumerable<CategoryModel> GetCategoryForMenuHead()
+      {
+            return GetAll("getMenuHead", null);
+      }
+
+      public void Insert(CategoryModel model)
         {
             var para = GetParams(model);
             Execute("insertCategory", para);

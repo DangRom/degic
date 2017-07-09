@@ -8,6 +8,7 @@ namespace DegicEducation.Services.IRepository{
         void Update(FeedbackModel model);
         void Delete(int id);
         FeedbackModel GetFeedbackById(int id);
-        IEnumerable<FeedbackModel> GetAllFeedbank();    
+        IEnumerable<FeedbackModel> GetAllFeedbank();   
+        IEnumerable<FeedbackModel> GetAllFeedbackForHomePage(); 
     }
 }

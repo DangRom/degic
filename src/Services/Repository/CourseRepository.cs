@@ -53,6 +53,21 @@ namespace DegicEducation.Services.Repository{
             return GetAll("getAllCourseForFeedback", null);
         }
 
+        public IEnumerable<CourseModel> GetAllCourseForHomePage()
+        {
+            return GetAll("getAllCourseForHomePage", null);
+        }
+
+          public IEnumerable<CourseModel> GetAllCourseForMenuLine()
+        {
+            return GetAll("getAllCourseForMenuLine", null);
+        }
+
+        public IEnumerable<CourseModel> GetForFooter()
+        {
+            return GetAll("getCourseForFooter", null);
+        }
+
         public DynamicParameters GetParams(CourseModel model){
             var para = new DynamicParameters();
             para.Add("pName", model.Name, DbType.String, ParameterDirection.Input);

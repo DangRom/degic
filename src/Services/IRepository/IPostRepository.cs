@@ -10,5 +10,8 @@ namespace DegicEducation.Services.IRepository{
        void Delete(int id);
        PostModel GetPostById(int id);
        IEnumerable<PostModel> GetAllPost();
+       IEnumerable<PostModel> GetPostForHomePage();
+       IEnumerable<PostModel> GetMenuLine();
+       IEnumerable<PostModel> GetForFooter();
     }
 }

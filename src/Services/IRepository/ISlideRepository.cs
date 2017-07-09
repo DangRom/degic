@@ -10,5 +10,6 @@ namespace DegicEducation.Services.IRepository{
         bool CheckAlias(string alias);
         SlideModel GetSlideById(int id);
         IEnumerable<SlideModel> GetAllSlide();
+        IEnumerable<SlideModel> GetAllSlideForHome();
     }
 }

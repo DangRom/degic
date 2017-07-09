@@ -16,7 +16,12 @@ namespace DegicEducation.Services.Repository{
             Execute("deleteFeedback", para);
         }
 
-        public IEnumerable<FeedbackModel> GetAllFeedbank()
+      public IEnumerable<FeedbackModel> GetAllFeedbackForHomePage()
+      {
+            return GetAll("getAllFeedbackForHomePage", null);
+      }
+
+      public IEnumerable<FeedbackModel> GetAllFeedbank()
         {
             return GetAll("getAllFeedback", null);
         }

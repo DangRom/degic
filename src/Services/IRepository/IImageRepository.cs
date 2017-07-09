@@ -9,5 +9,7 @@ namespace DegicEducation.Services.IRepository{
        void Delete(int id);
        ImageModel GetImageById(int id);
        IEnumerable<ImageModel> GetAllImage();
+       IEnumerable<ImageModel> GetAllImageForHomePage();
+       IEnumerable<ImageModel> GetAllCustomerForHomePage();
     }
 }

@@ -28,11 +28,26 @@ namespace DegicEducation.Services.Repository{
          return GetAll("getAllPost", null);
       }
 
+      public IEnumerable<PostModel> GetForFooter()
+      {
+         return GetAll("getPostForFooter", null);
+      }
+
+      public IEnumerable<PostModel> GetMenuLine()
+      {
+         return GetAll("getAllPostForMenuLine", null);
+      }
+
       public PostModel GetPostById(int id)
       {
          var para = new DynamicParameters();
          para.Add("pId", id, DbType.Int32, ParameterDirection.Input);
          return GetById("getPostById", para);
+      }
+
+      public IEnumerable<PostModel> GetPostForHomePage()
+      {
+         return GetAll("getPostForHome", null);
       }
 
       public void Insert(PostModel model)

@@ -16,7 +16,22 @@ namespace DegicEducation.Services.Repository
             return GetById("getCompany", null);
         }
 
-        public void SaveCompany(CompanyModel model)
+      public CompanyModel GetCompanyForFooter()
+      {
+         return GetById("getCompanyForFooter", null);
+      }
+
+      public CompanyModel GetCompanyForHead()
+      {
+         return GetById("getCompanyForHead", null);
+      }
+
+      public CompanyModel GetCompanyForHome()
+      {
+         return GetById("getCompanyForHome", null);
+      }
+
+      public void SaveCompany(CompanyModel model)
         {
             var para = new DynamicParameters();
             para.Add("pName", model.Name, DbType.String, ParameterDirection.Input);
@@ -30,7 +45,7 @@ namespace DegicEducation.Services.Repository
             para.Add("pFacebook", model.Facebook, DbType.String, ParameterDirection.Input);
             para.Add("pDescription", model.Description, DbType.String, ParameterDirection.Input);
             para.Add("pAbout", model.About, DbType.String, ParameterDirection.Input);
-            Execute("saveCompany", para);
+            Execute("updateCompany", para);
         }
     }
 }

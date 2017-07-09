@@ -1,0 +1,38 @@
+@model IEnumerable<DegicEducation.Areas.Admin.Models.CourseViewModel>
+
+<section class="bg-lighter">
+                <div class="container pb-60">
+                    <div class="section-title mb-10">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h2 class="mt-0 text-uppercase font-28 line-bottom line-height-1"><span class="text-theme-color-2 font-weight-400">CÁC KHÓA HỌC</span></h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section-content">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="owl-carousel-4col" data-dots="true">
+                                   @foreach(var c in Model)
+                                   {
+                                      var clink = "/khoa-hoc/" + @c.Alias;
+                                      <div class="item">
+                                          <div class="service-block bg-white">
+                                             <div class="thumb"> 
+                                                  <a href="@clink"><img alt="@c.Name" src="@c.Image" class="img-fullwidth"></a>
+                                                   <h4 class="text-white mt-0 mb-0"><span class="price">@c.Price</span></h4>
+                                             </div>
+                                             <div class="content text-left flip p-25 pt-0">
+                                                   <a href="@clink"><h4 class="line-bottom mb-10">@c.Name</h4></a>
+                                                   <p>@c.ShortDescription.</p>
+                                                   <a class="btn btn-dark btn-theme-colored btn-sm text-uppercase mt-10" href="@clink">xem thêm</a>
+                                             </div>
+                                          </div>
+                                       </div>
+                                   }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>

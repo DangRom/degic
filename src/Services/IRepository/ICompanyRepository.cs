@@ -10,5 +10,8 @@ namespace DegicEducation.Services.IRepository
     public interface ICompanyRepository : IRepositoriesBase<CompanyModel>{
         CompanyModel GetCompany();
         void SaveCompany(CompanyModel model);
+        CompanyModel GetCompanyForHome();
+        CompanyModel GetCompanyForHead();
+        CompanyModel GetCompanyForFooter();
     }
 }
