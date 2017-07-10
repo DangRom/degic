@@ -45,6 +45,13 @@ namespace DegicEducation.Services.Repository{
             return GetAll("getMenuHead", null);
       }
 
+      public CategoryModel GetContentByAlias(string alias)
+      {
+         var para = new DynamicParameters();
+         para.Add("pAlias", alias, DbType.String, ParameterDirection.Input);
+         return GetById("getCategoryContentByAlias", para);
+      }
+
       public void Insert(CategoryModel model)
         {
             var para = GetParams(model);

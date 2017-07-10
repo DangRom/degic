@@ -1,6 +1,6 @@
 @model DegicEducation.Models.PostViewModel
 @{
-    ViewData["Title"] = " - các khóa học của chúng tôi";
+    ViewData["Title"] = " - @Model.Name";
 }
 
 
@@ -11,11 +11,12 @@
         <div class="section-content">
           <div class="row">
             <div class="col-md-12">
-              <h2 class="title text-white">Single Post</h2>
+              <h2 class="title text-white">@ViewBag.Backlink.Name</h2>
               <ol class="breadcrumb text-left text-black mt-10">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Pages</a></li>
-                <li class="active text-gray-silver">Page Title</li>
+                <li><a href="#">Trang chủ</a></li>
+                @{ var backlink = "/danh-sach/" + ViewBag.Backlink.Alias;}
+                <li><a href="backlink">Danh sách @ViewBag.Backlink.Name</a></li>
+                <li class="active text-gray-silver">@Model.Name</li>
               </ol>
             </div>
           </div>

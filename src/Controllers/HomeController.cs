@@ -25,18 +25,35 @@ namespace DegicEducation.Controllers
             }catch{throw;}
         }
 
-        public IActionResult About()
+        [Route("/ve-chung-toi")]
+        public async Task<IActionResult> About()
         {
-            ViewData["Message"] = "Your application description page.";
-
-            return View();
+            try{
+                var aboutmodel = await Task.Factory.StartNew(() => _companyRepo.GetAbout().About);
+                var about = new CompanyViewModel(){
+                    About = aboutmodel
+                };
+                return View(about);
+            }catch(Exception ex){
+                return View("Error");
+            }
         }
 
+        [Route("/lien-he")]
         public IActionResult Contact()
         {
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
+            try{
+                var companymodel = _companyRepo.GetCompanyForFooter();
+                var company = new CompanyViewModel(){
+                    Hotline = companymodel.Hotline,
+                    Phone = companymodel.Phone,
+                    Address = companymodel.Address,
+                    Email = companymodel.Email
+                };
+                return View(company);
+            }catch(Exception ex){
+                throw;
+            }
         }
 
         public IActionResult Error()

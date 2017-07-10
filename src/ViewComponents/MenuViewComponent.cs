@@ -49,6 +49,8 @@ namespace DegicEducation.ViewComponents{
                   }
                }
 
+               Commons.SystemVariable.Categorys = menuhead;
+               Commons.SystemVariable.Posts = menuline;
                var menu = new MenuViewModel();
                menu.MenuHead = menuhead;
                menu.MenuLine = menuline;

@@ -13,5 +13,6 @@ namespace DegicEducation.Services.IRepository
         CompanyModel GetCompanyForHome();
         CompanyModel GetCompanyForHead();
         CompanyModel GetCompanyForFooter();
+        CompanyModel GetAbout();
     }
 }

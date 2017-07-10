@@ -1,7 +1,69 @@
-﻿@{
-    ViewData["Title"] = "About";
+﻿@model DegicEducation.Models.CompanyViewModel
+@{
+    ViewData["Title"] = " - Về chúng tôi";
 }
-<h2>@ViewData["Title"].</h2>
-<h3>@ViewData["Message"]</h3>
 
-<p>Use this area to provide additional information.</p>
+    <!-- Section: inner-header -->
+    <section class="inner-header divider parallax layer-overlay overlay-dark-5" data-bg-img="/images/bg/bg3.jpg">
+      <div class="container pt-70 pb-20">
+        <!-- Section Content -->
+        <div class="section-content">
+          <div class="row">
+            <div class="col-md-12">
+              <h2 class="title text-white">Về chúng tôi</h2>
+              <ol class="breadcrumb text-left text-black mt-10">
+                <li><a href="/">Trang chủ</a></li>
+                <li class="active text-gray-silver">Về chúng tôi</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    @Html.Raw(@Model.About)
+
+    <!-- Divider: Call To Action -->
+    <section class="bg-theme-color-2">
+      <div class="container pt-10 pb-20">
+        <div class="row">
+          <div class="call-to-action">
+            <div class="col-md-6">
+              <h3 class="mt-5 mb-5 text-white vertical-align-middle"><i class="pe-7s-mail mr-10 font-48 vertical-align-middle"></i> SUBSCRIBE TO OUR NEWSLETTER</h3>
+            </div>
+            <div class="col-md-6">
+              <!-- Mailchimp Subscription Form Starts Here -->
+              <form id="mailchimp-subscription-form" class="newsletter-form mt-10">
+                <div class="input-group">
+                  <input type="email" value="" name="EMAIL" placeholder="Your Email" class="form-control input-lg font-16" data-height="45px" id="mce-EMAIL-footer">
+                  <span class="input-group-btn">
+                    <button data-height="45px" class="btn bg-theme-colored text-white btn-xs m-0 font-14" type="submit">Subscribe</button>
+                  </span>
+                </div>
+              </form>
+              <!-- Mailchimp Subscription Form Validation-->
+              <script type="text/javascript">
+                $('#mailchimp-subscription-form').ajaxChimp({
+                    callback: mailChimpCallBack,
+                    url: '//thememascot.us9.list-manage.com/subscribe/post?u=a01f440178e35febc8cf4e51f&amp;id=49d6d30e1e'
+                });
+
+                function mailChimpCallBack(resp) {
+                    // Hide any previous response text
+                    var $mailchimpform = $('#mailchimp-subscription-form'),
+                        $response = '';
+                    $mailchimpform.children(".alert").remove();
+                    if (resp.result === 'success') {
+                        $response = '<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' + resp.msg + '</div>';
+                    } else if (resp.result === 'error') {
+                        $response = '<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' + resp.msg + '</div>';
+                    }
+                    $mailchimpform.prepend($response);
+                }
+              </script>
+              <!-- Mailchimp Subscription Form Ends Here -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>

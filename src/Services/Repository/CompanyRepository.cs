@@ -12,7 +12,12 @@ namespace DegicEducation.Services.Repository
 {
     public class CompanyRepository : RepositoriesBase<CompanyModel>, ICompanyRepository
     {
-        public CompanyModel GetCompany(){
+      public CompanyModel GetAbout()
+      {
+         return GetById("getAbout", null);
+      }
+
+      public CompanyModel GetCompany(){
             return GetById("getCompany", null);
         }
 

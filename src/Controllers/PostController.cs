@@ -8,9 +8,11 @@ using Microsoft.AspNetCore.Mvc;
 namespace DegicEducation.Controllers{
     public class PostController : Controller{
        private readonly IPostRepository _postRepo;
+       private readonly ICategoryRepository _cateRepo;
        
-       public PostController(IPostRepository postRepo){
+       public PostController(IPostRepository postRepo, ICategoryRepository cateRepo){
           _postRepo = postRepo;
+          _cateRepo = cateRepo;
        }
 
        [Route("/danh-sach/{alias}")]
@@ -26,6 +28,7 @@ namespace DegicEducation.Controllers{
                     CreateDay = p.CreateDate.Day.ToString(),
                     CreateMonth = p.CreateDate.Month.ToString()
                 }).ToList();
+                ViewBag.Backlink = GetBacklinkForList(alias);
                 return View(posts);
            }catch(Exception ex){
                return View("Error");
@@ -46,10 +49,45 @@ namespace DegicEducation.Controllers{
                     CreateMonth = postmodel.CreateDate.Month.ToString(),
                     Content = postmodel.Content
                 };
+                ViewBag.Backlink = GetBacklinkForDetail(alias);
                 return View(post);
            }catch(Exception ex){
                return View("Error");
            }
+       }
+
+       [Route("/{alias}")]
+       public async Task<IActionResult> CategoryContent(string alias){
+            try{
+                var categorymodel = await Task.Factory.StartNew(() => _cateRepo.GetContentByAlias(alias));
+                var category = new CategoryViewModel(){
+                    Name = categorymodel.Name,
+                    Alias = categorymodel.Alias,
+                    Content = categorymodel.Content
+                };
+                return View(category);
+            }catch(Exception ex){
+                return View("Error");
+            }
+       }
+
+       private BacklinkViewModel GetBacklinkForList(string alias){
+           var category = Commons.SystemVariable.Categorys.FirstOrDefault(p => p.Alias == alias);
+           var backlink = new BacklinkViewModel(){
+               Name = category.Name,
+               Alias = category.Alias
+           };
+           return backlink;
+       }
+
+       private BacklinkViewModel GetBacklinkForDetail(string alias){
+           var cateid = Commons.SystemVariable.Posts.FirstOrDefault(p => p.Alias == alias).HeadId;
+           var category = Commons.SystemVariable.Categorys.FirstOrDefault(c => c.Id == cateid);
+           var backlink = new BacklinkViewModel(){
+               Name = category.Name,
+               Alias = category.Alias
+           };
+           return backlink;
        }
     }
 }
