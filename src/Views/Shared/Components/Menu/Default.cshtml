@@ -14,10 +14,18 @@
                                   {
                                        var hlink = "/" + @h.Alias;
                                        <li><a href="@hlink">@h.Name</a></li>
-                                  }
-                                  else
-                                  {
-                                       var hlink = "/danh-sach/" + @h.Alias;
+                                   }
+                                   else
+                                   {
+                                       var hlink = "";
+                                       if(@h.ClassType == true)
+                                       {
+                                           hlink = "/khoa-hoc";
+                                       }
+                                       else
+                                       {
+                                           hlink = "/danh-sach/" + @h.Alias;
+                                       }
                                        <li><a href="@hlink">@h.Name</a>
                                              <ul class="dropdown">
                                                 @foreach(var l in lines)

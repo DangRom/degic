@@ -23,7 +23,14 @@ namespace DegicEducation.Services.Repository{
          Execute("deletePost", para);
       }
 
-      public IEnumerable<PostModel> GetAllPost()
+        public IEnumerable<PostModel> GetAllOfCategory(string catealias)
+        {
+            var para = new DynamicParameters();
+            para.Add("pCateAlias", catealias, DbType.String, ParameterDirection.Input);
+            return GetAll("getAllPostOfCategoryAlias", para);
+        }
+
+        public IEnumerable<PostModel> GetAllPost()
       {
          return GetAll("getAllPost", null);
       }

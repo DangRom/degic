@@ -68,6 +68,11 @@ namespace DegicEducation.Services.Repository{
             return GetAll("getCourseForFooter", null);
         }
 
+        public IEnumerable<CourseModel> GetAllCourseOfClass()
+        {
+            return GetAll("getAllCourseOfClass", null);
+        }
+
         public DynamicParameters GetParams(CourseModel model){
             var para = new DynamicParameters();
             para.Add("pName", model.Name, DbType.String, ParameterDirection.Input);
@@ -80,5 +85,5 @@ namespace DegicEducation.Services.Repository{
             para.Add("pActivated", model.Activated, DbType.Boolean, ParameterDirection.Input);
             return para;
         }
-   }
+    }
 }
