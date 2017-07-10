@@ -14,5 +14,7 @@ namespace DegicEducation.Services.IRepository{
        IEnumerable<PostModel> GetMenuLine();
        IEnumerable<PostModel> GetForFooter();
         IEnumerable<PostModel> GetAllOfCategory(string catealias);
+        PostModel GetPostDetail(string alias);
+        IEnumerable<PostModel> GetLastPost();
     }
 }

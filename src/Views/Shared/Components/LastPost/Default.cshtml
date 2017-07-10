@@ -1,0 +1,22 @@
+@model IEnumerable<DegicEducation.Models.PostViewModel>
+
+<div class="col-sm-12 col-md-3">
+            <div class="sidebar sidebar-left mt-sm-30">
+              <div class="widget">
+                <h5 class="widget-title line-bottom">Bài viết mới nhất</h5>
+                <div class="latest-posts">
+                   @foreach(var p in Model)
+                   {
+                      var plink = "/bai-viet/" + @p.Alias;
+                      <article class="post media-post clearfix pb-0 mb-10">
+                        <a class="post-thumb" href="@plink"><img src="@p.Image" alt="@p.Name"></a>
+                        <div class="post-right">
+                           <h5 class="post-title mt-0"><a href="@plink">@p.Name</a></h5>
+                           <p>@p.ShortDescriptions</p>
+                        </div>
+                        </article>
+                   }
+                </div>
+              </div>
+            </div>
+          </div>

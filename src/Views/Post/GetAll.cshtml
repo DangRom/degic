@@ -1,0 +1,65 @@
+﻿@model IEnumerable<DegicEducation.Models.PostViewModel>
+@{
+    ViewData["Title"] = " - các khóa học của chúng tôi";
+}
+
+
+ <!-- Section: inner-header -->
+    <section class="inner-header divider parallax layer-overlay overlay-dark-5" data-bg-img="/images/bg/bg3.jpg">
+      <div class="container pt-70 pb-20">
+        <!-- Section Content -->
+        <div class="section-content">
+          <div class="row">
+            <div class="col-md-12">
+              <h2 class="title text-white">Blog</h2>
+              <ol class="breadcrumb text-left text-black mt-10">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Pages</a></li>
+                <li class="active text-gray-silver">Page Title</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section: News & Blog -->
+    <section id="news">
+      <div class="container">
+        <div class="section-content">
+          <div class="row">
+              @foreach(var p in Model)
+              {
+                  var plink = "/bai-viet/" + @p.Alias;
+                  <div class="col-sm-6 col-md-4">
+                    <article class="post clearfix mb-30 mb-sm-30">
+                        <div class="entry-header">
+                        <div class="post-thumb thumb"> 
+                            <a href="@plink"><img src="@p.Image" alt="@p.Name" class="img-responsive img-fullwidth"> </a>
+                        </div>
+                        </div>
+                        <div class="entry-content p-20 pr-10 bg-lighter">
+                        <div class="entry-meta media mt-0 no-bg no-border">
+                            <div class="entry-date media-left text-center flip bg-theme-colored pt-5 pr-15 pb-5 pl-15">
+                            <ul>
+                                <li class="font-16 text-white font-weight-600 border-bottom">@p.CreateDay</li>
+                                <li class="font-12 text-white text-uppercase">@p.CreateMonth</li>
+                            </ul>
+                            </div>
+                            <div class="media-body pl-15">
+                            <div class="event-content pull-left flip">
+                                <h4 class="entry-title text-white text-uppercase m-0 mt-5"><a href="@plink">@p.Name</a></h4>
+                            </div>
+                            </div>
+                        </div>
+                        <p class="mt-10">@p.ShortDescriptions</p>
+                        <a href="@plink" class="btn-read-more">xem thêm</a>
+                        <div class="clearfix"></div>
+                        </div>
+                    </article>
+                    </div>
+              }
+          </div>
+        </div>
+      </div>
+    </section>

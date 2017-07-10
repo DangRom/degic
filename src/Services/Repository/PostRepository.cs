@@ -40,6 +40,11 @@ namespace DegicEducation.Services.Repository{
          return GetAll("getPostForFooter", null);
       }
 
+      public IEnumerable<PostModel> GetLastPost()
+      {
+         return GetAll("getLastPost", null);
+      }
+
       public IEnumerable<PostModel> GetMenuLine()
       {
          return GetAll("getAllPostForMenuLine", null);
@@ -50,6 +55,13 @@ namespace DegicEducation.Services.Repository{
          var para = new DynamicParameters();
          para.Add("pId", id, DbType.Int32, ParameterDirection.Input);
          return GetById("getPostById", para);
+      }
+
+      public PostModel GetPostDetail(string alias)
+      {
+        var para = new DynamicParameters();
+        para.Add("pAlias", alias, DbType.String, ParameterDirection.Input);
+         return GetById("getPostDetail", para);
       }
 
       public IEnumerable<PostModel> GetPostForHomePage()

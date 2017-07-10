@@ -15,5 +15,7 @@ namespace DegicEducation.Services.IRepository{
         IEnumerable<CourseModel> GetAllCourseForMenuLine();
         IEnumerable<CourseModel> GetForFooter();
         IEnumerable<CourseModel> GetAllCourseOfClass();
+        CourseModel GetCourseDetail(string alias);
+        IEnumerable<CourseModel> GetNewestCourse();
     }
 }

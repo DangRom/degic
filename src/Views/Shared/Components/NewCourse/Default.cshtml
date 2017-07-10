@@ -1,0 +1,25 @@
+@model IEnumerable<DegicEducation.Models.CourseViewModel>
+
+<div class="col-sm-12 col-md-3">
+            <div class="sidebar sidebar-left mt-sm-30">
+              <div class="widget">
+                <h5 class="widget-title line-bottom">Khóa học mới nhất</h5>
+                <div class="latest-posts">
+                   @foreach(var c in Model)
+                   {
+                      var clink = "/khoa-hoc/" + @c.Alias;
+                      <article class="post media-post clearfix pb-0 mb-10">
+                        <a class="post-thumb" href="@clink">
+                           <img src="@c.Image" alt="@c.Name">
+                           <h4 class="text-white mt-0 mb-0"><span class="price">@c.Price</span></h4>
+                        </a>
+                        <div class="post-right">
+                           <h5 class="post-title mt-0"><a href="clink">@c.Name</a></h5>
+                           <p>@c.ShortDesciptions</p>
+                        </div>
+                        </article>
+                   }
+                </div>
+              </div>
+            </div>
+          </div>

@@ -1,29 +1,23 @@
+using System;
+using System.Linq;
+using System.Threading.Tasks;
 using DegicEducation.Models;
 using DegicEducation.Services.IRepository;
 using Microsoft.AspNetCore.Mvc;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace DegicEducation.Controllers{
     public class PostController : Controller{
-        private readonly IPostRepository _postRepo;
-        private readonly ICategoryRepository _cateRepo;
-        private readonly ICourseRepository _courseRepo;
+       private readonly IPostRepository _postRepo;
        
-       public PostController(IPostRepository postRepo, ICategoryRepository cateRepo, ICourseRepository courseRepo){
+       public PostController(IPostRepository postRepo){
           _postRepo = postRepo;
-            _cateRepo = cateRepo;
-            _courseRepo = courseRepo;
        }
 
-        [Route("/danh-sach/{alias}")]
-        public async Task<IActionResult> ListPostOfCategory(string alias)
-        {
-            try
-            {
+       [Route("/danh-sach/{alias}")]
+       public async Task<IActionResult> GetAll(string alias){
+           try{
                 var postmodels = await Task.Factory.StartNew(() => _postRepo.GetAllOfCategory(alias));
-                var posts = postmodels.Select(p => new PostViewModel
-                {
+                var posts = postmodels.Select(p => new PostViewModel{
                     Name = p.Name,
                     Alias = p.Alias,
                     Image = p.Image,
@@ -33,34 +27,29 @@ namespace DegicEducation.Controllers{
                     CreateMonth = p.CreateDate.Month.ToString()
                 }).ToList();
                 return View(posts);
-            }   
-            catch
-            {
-                return View("Error");
-            }
-        }
+           }catch(Exception ex){
+               return View("Error");
+           }
+       }
 
-        [Route("/khoa-hoc")]
-        public async Task<IActionResult> GetAllCourse()
-        {
-            try
-            {
-                var coursemodels = await Task.Factory.StartNew(() => _courseRepo.GetAllCourseOfClass());
-                var courses = coursemodels.Select(c => new CourseViewModel
-                {
-                    Name = c.Name,
-                    Alias = c.Alias,
-                    Image = c.Image,
-                    Status = c.Status,
-                    Price = c.Price,
-                    ShortDesciptions = c.ShortDesciptions
-                }).ToList();
-                return View(courses);
-            }
-            catch
-            {
-                return View("Error");
-            }
-        }
+       [Route("/bai-viet/{alias}")]
+       public async Task<IActionResult> Detail(string alias){
+           try{
+                var postmodel = await Task.Factory.StartNew(() => _postRepo.GetPostDetail(alias));
+                var post = new PostViewModel(){
+                    Name = postmodel.Name,
+                    Alias = postmodel.Alias,
+                    Image = postmodel.Image,
+                    ShortDescriptions = postmodel.ShortDescriptions,
+                    CreateDate = postmodel.CreateDate,
+                    CreateDay = postmodel.CreateDate.Day.ToString(),
+                    CreateMonth = postmodel.CreateDate.Month.ToString(),
+                    Content = postmodel.Content
+                };
+                return View(post);
+           }catch(Exception ex){
+               return View("Error");
+           }
+       }
     }
 }
