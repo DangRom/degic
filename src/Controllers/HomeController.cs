@@ -22,7 +22,7 @@ namespace DegicEducation.Controllers
                     Description = companymodel.Description
                 };
                 return View(company);
-            }catch{throw;}
+            }catch{return View("Error");}
         }
 
         [Route("/ve-chung-toi")]
@@ -34,9 +34,7 @@ namespace DegicEducation.Controllers
                     About = aboutmodel
                 };
                 return View(about);
-            }catch(Exception ex){
-                return View("Error");
-            }
+            }catch{return View("Error");}
         }
 
         [Route("/lien-he")]
@@ -51,9 +49,7 @@ namespace DegicEducation.Controllers
                     Email = companymodel.Email
                 };
                 return View(company);
-            }catch(Exception ex){
-                throw;
-            }
+            }catch{return View("Error");}
         }
 
         public IActionResult Error()

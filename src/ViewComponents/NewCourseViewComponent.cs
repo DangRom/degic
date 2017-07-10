@@ -21,9 +21,7 @@ namespace DegicEducation.ViewComponents{
                   ShortDesciptions = c.ShortDesciptions
                }).ToList();
                return View(courses);
-          }catch(Exception ex){
-             throw;
-          }
+          }catch{return View("Error");}
        }
     }
 }

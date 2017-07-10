@@ -12,7 +12,7 @@
                                   var lines = Model.MenuLine.Where(l => l.HeadId == h.Id).ToList();
                                   if(lines.Count == 0)
                                   {
-                                       var hlink = "/" + @h.Alias;
+                                       var hlink = "/gioi-thieu/" + @h.Alias;
                                        <li><a href="@hlink">@h.Name</a></li>
                                    }
                                    else

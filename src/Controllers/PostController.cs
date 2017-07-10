@@ -30,9 +30,7 @@ namespace DegicEducation.Controllers{
                 }).ToList();
                 ViewBag.Backlink = GetBacklinkForList(alias);
                 return View(posts);
-           }catch(Exception ex){
-               return View("Error");
-           }
+           }catch{return View("Error");}
        }
 
        [Route("/bai-viet/{alias}")]
@@ -51,12 +49,10 @@ namespace DegicEducation.Controllers{
                 };
                 ViewBag.Backlink = GetBacklinkForDetail(alias);
                 return View(post);
-           }catch(Exception ex){
-               return View("Error");
-           }
+           }catch{return View("Error");}
        }
 
-       [Route("/{alias}")]
+       [Route("/gioi-thieu/{alias}")]
        public async Task<IActionResult> CategoryContent(string alias){
             try{
                 var categorymodel = await Task.Factory.StartNew(() => _cateRepo.GetContentByAlias(alias));
@@ -66,9 +62,7 @@ namespace DegicEducation.Controllers{
                     Content = categorymodel.Content
                 };
                 return View(category);
-            }catch(Exception ex){
-                return View("Error");
-            }
+            }catch{return View("Error");}
        }
 
        private BacklinkViewModel GetBacklinkForList(string alias){
