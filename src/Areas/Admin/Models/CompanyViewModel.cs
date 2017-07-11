@@ -31,7 +31,6 @@ namespace DegicEducation.Areas.Admin.Models{
         [MaxLength(255, ErrorMessage = "không được dài quá 255 ký tự")]
         public string Facebook { get; set; }
 
-        [MaxLength(255, ErrorMessage = "không được dài quá 255 ký tự")]
         public string Description { get; set; }
         public string About { get; set; }
     }
