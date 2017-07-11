@@ -1,0 +1,15 @@
+.enMoney::after {
+    content: " vnd";
+}
+
+.negMoney {
+    color: red;
+}
+
+div.negMoney::before {
+    content: '($';
+}
+
+div.negMoney::after {
+    content: ')';
+}
