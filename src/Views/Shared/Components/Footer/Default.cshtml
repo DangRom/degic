@@ -5,15 +5,15 @@
             <div class="container">
                 <div class="row border-bottom">
                     <div class="col-sm-6 col-md-3">
-                        <div class="widget dark">
-                            <a href="/"><img class="mt-5 mb-20" alt="" src="~/images/degic-logo.png"></a>
-                            <p>@Model.Company.Address</p>
+                         <div class="widget dark">
+                            <a href="/"><img class="mt-5 mb-20" style="width: 85%" alt="" src="~/images/degic-logo.png"></a>
+                            <!-- <p>@Model.Company.Address</p>
                             <ul class="list-inline mt-5">
                                 <li class="m-0 pl-10 pr-10"> <i class="fa fa-phone text-theme-color-2 mr-5"></i> <a class="text-gray" href="#">ĐT : @Model.Company.Phone</a> </li>
                                 <li class="m-0 pl-10 pr-10"> <i class="fa fa-envelope-o text-theme-color-2 mr-5"></i> <a class="text-gray" href="#">Email :@Model.Company.Email</a> </li>
                                 <li class="m-0 pl-10 pr-10"> <i class=" text-theme-color-2 mr-5"></i> <a class="text-gray" href="#">MST : @Model.Company.TaxCode</a> </li>
-                            </ul>
-                        </div>
+                            </ul> -->
+                        </div> 
                     </div>
                     <div class="col-sm-6 col-md-3">
                         <div class="widget dark">
@@ -43,20 +43,20 @@
                     </div>
                     <div class="col-sm-6 col-md-3">
                         <div class="widget dark">
-                            <h4 class="widget-title line-bottom-theme-colored-2">Giờ làm việc</h4>
+                            <h4 class="widget-title line-bottom-theme-colored-2">Thông tin</h4>
                             <div class="opening-hours">
                                 <ul class="list-border">
-                                    <li class="clearfix"> <span> Mon - Tues :  </span>
-                                        <div class="value pull-right"> 6.00 am - 10.00 pm </div>
+                                    <li class="clearfix"> <span>Địa chỉ : </span>
+                                        <div class="value pull-right"> @Model.Company.Address </div>
                                     </li>
-                                    <li class="clearfix"> <span> Wednes - Thurs :</span>
-                                        <div class="value pull-right"> 8.00 am - 6.00 pm </div>
+                                    <li class="clearfix"> <span>Điện thoại :</span>
+                                        <div class="value pull-right">@Model.Company.Phone</div>
                                     </li>
-                                    <li class="clearfix"> <span> Fri : </span>
-                                        <div class="value pull-right"> 3.00 pm - 8.00 pm </div>
+                                    <li class="clearfix"> <span> Email :</span>
+                                        <div class="value pull-right">@Model.Company.Email</div>
                                     </li>
-                                    <li class="clearfix"> <span> Sun : </span>
-                                        <div class="value pull-right"> Closed </div>
+                                    <li class="clearfix"> <span>Giờ làm việc :</span>
+                                        <div class="value pull-right">T2 đến CN : 8 MA - 8 PM</div>
                                     </li>
                                 </ul>
                             </div>
