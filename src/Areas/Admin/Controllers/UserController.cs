@@ -39,7 +39,7 @@ namespace DegicEducation.Areas.Admin.Controllers{
        public async Task<IActionResult> New(UserViewModel user){
            try{
             if(ModelState.IsValid){
-                if(!_userRepo.CheckUsername(user.UserName)){
+                if(_userRepo.CheckUsername(user.UserName)){
                     ModelState.AddModelError("", "hãy thử tên đăng nhập khác");
                     return View();
                 }

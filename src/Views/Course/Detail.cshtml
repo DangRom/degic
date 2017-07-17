@@ -1,6 +1,6 @@
 @model DegicEducation.Models.CourseViewModel
 @{
-    ViewData["Title"] = " - @Model.Name";
+    ViewData["Title"] =" " + @Model.Name;
 }
 
 
@@ -38,7 +38,7 @@
                 </div>
                 <div class="entry-meta pl-15">
                   <ul class="list-inline">
-                    <li>Giá: <span class="text-theme-color-2 price"> @Model.Price</span></li>
+                    <li>Học phí: <span class="text-theme-color-2 price"> @Model.Price</span></li>
                     <li>Trạng thái: <span class="text-theme-color-2">@Model.Status</span></li>
                   </ul>
                 </div>
