@@ -15,7 +15,7 @@
               <ol class="breadcrumb text-left text-black mt-10">
                 <li><a href="#">Trang chủ</a></li>
                 @{ var backlink = "/danh-sach/" + ViewBag.Backlink.Alias;}
-                <li><a href="backlink">Danh sách @ViewBag.Backlink.Name</a></li>
+                <li><a href="@backlink">Danh sách @ViewBag.Backlink.Name</a></li>
                 <li class="active text-gray-silver">@Model.Name</li>
               </ol>
             </div>
