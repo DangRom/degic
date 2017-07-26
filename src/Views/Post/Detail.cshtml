@@ -47,7 +47,8 @@
                   @Html.Raw(@Model.Content)
                 </div>
               </article>
-              <div class="fb-comments" data-href="http://degic.vn/" data-width="100%" data-numposts="10"></div>
+              @{ var comments = "http://degic.vn/danh-sach/" + ViewBag.Backlink.Alias + "/" + @Model.Name;}
+              <div class="fb-comments" data-href="@comments" data-width="100%" data-numposts="10"></div>
             </div>
           </div>
           @await Component.InvokeAsync("LastPost") 

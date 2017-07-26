@@ -50,7 +50,8 @@
               <div class="comment-box">
                 <div class="row">
                   <div class="col-sm-12">
-                    <div class="fb-comments" data-href="http://degic.vn/" data-width="100%" data-numposts="10"></div>
+                    @{ var comments = "http://degic.vn/danh-sach/khoa-hoc/" + @Model.Name;}
+                    <div class="fb-comments" data-href="@comments" data-width="100%" data-numposts="10"></div>
                     </div>
                   </div>
                 </div>
