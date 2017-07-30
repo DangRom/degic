@@ -88,6 +88,7 @@ namespace DegicEducation.Services.Repository{
          para.Add("pAlias", model.Alias, DbType.String, ParameterDirection.Input);
          para.Add("pImage", model.Image, DbType.String, ParameterDirection.Input);
          para.Add("pShortDescriptions", model.ShortDescriptions, DbType.String, ParameterDirection.Input);
+         para.Add("pOrders", model.Orders, DbType.Int32, ParameterDirection.Input);
          para.Add("pActivated", model.Activated, DbType.Boolean, ParameterDirection.Input);
          para.Add("pContent", model.Content, DbType.String, ParameterDirection.Input);
          para.Add("pCategoryId", model.CategoryId, DbType.Int32, ParameterDirection.Input);

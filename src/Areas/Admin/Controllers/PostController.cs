@@ -39,7 +39,8 @@ namespace DegicEducation.Areas.Admin.Controllers{
                Name = p.Name,
                CategoryName = p.CategoryName,
                Activated = p.Activated,
-               HomePage = p.HomePage
+               HomePage = p.HomePage,
+               Orders = p.Orders
             }).ToList();
             return View(posts);
          }catch(Exception ex){
@@ -69,6 +70,7 @@ namespace DegicEducation.Areas.Admin.Controllers{
                      Alias = post.Alias,
                      Image = post.Image,
                      ShortDescriptions = post.ShortDescription,
+                     Orders = post.Orders,
                      Activated = post.Activated,
                      HomePage = post.HomePage,
                      CreateDate = DateTime.Now,
@@ -101,6 +103,7 @@ namespace DegicEducation.Areas.Admin.Controllers{
                Alias = postmodel.Alias,
                Image = postmodel.Image,
                ShortDescription = postmodel.ShortDescriptions,
+               Orders = postmodel.Orders,
                Activated = postmodel.Activated,
                HomePage = postmodel.HomePage,
                CategoryId = postmodel.CategoryId,
@@ -124,6 +127,7 @@ namespace DegicEducation.Areas.Admin.Controllers{
                   Alias = post.Alias,
                   Image = post.Image,
                   ShortDescriptions = post.ShortDescription,
+                  Orders = post.Orders,
                   Activated = post.Activated,
                   HomePage = post.HomePage,
                   CategoryId = post.CategoryId,

@@ -26,5 +26,7 @@ namespace DegicEducation.Areas.Admin.Models{
        [Required(ErrorMessage = "không được bỏ trống")]
        public int CategoryId { get; set; }
        public string CategoryName { get; set; }
+       [Required(ErrorMessage = "không được bỏ trống")]
+       public int Orders { get; set; }
     }
 }
