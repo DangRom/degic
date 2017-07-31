@@ -33,5 +33,7 @@ namespace DegicEducation.Areas.Admin.Models{
 
         public string Description { get; set; }
         public string About { get; set; }
+        [MaxLength(255, ErrorMessage = "không được dài quá 255 ký tự")]
+        public string WorkTime { get; set; }
     }
 }

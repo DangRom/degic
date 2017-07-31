@@ -16,7 +16,8 @@ namespace DegicEducation.ViewComponents{
                   Facebook = headmodel.Facebook,
                   Google = headmodel.Google,
                   Tweeter = headmodel.Tweeter,
-                  Hotline = headmodel.Hotline
+                  Hotline = headmodel.Hotline,
+                  WorkTime = headmodel.WorkTime
                };
                return View(head);
             }catch{throw;}

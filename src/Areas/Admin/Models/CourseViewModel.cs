@@ -26,5 +26,6 @@ namespace DegicEducation.Areas.Admin.Models{
         public string ShortDescription { get; set; }
         public string Content { get; set; }
         public bool Activated { get; set; }
+        public int Orders { get; set; }
     }
 }

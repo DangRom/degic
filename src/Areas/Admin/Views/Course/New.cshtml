@@ -36,6 +36,13 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label for="orders" class="col-sm-2 control-label">STT</label>
+                    <div class="col-sm-2">
+                        <input asp-for="Orders" class="form-control height-input" id="orders">
+                        <span asp-validation-for="Orders" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
                   <div class="col-sm-offset-2 col-sm-10">
                         <label class="col-sm-2"><input asp-for="Activated" checked/>   hiển thị</label>
                   </div>

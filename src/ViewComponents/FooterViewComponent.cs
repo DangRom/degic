@@ -35,7 +35,8 @@ namespace DegicEducation.ViewComponents{
                Hotline = companymodel.Hotline,
                Facebook = companymodel.Facebook,
                Google = companymodel.Google,
-               Tweeter = companymodel.Tweeter
+               Tweeter = companymodel.Tweeter,
+               WorkTime = companymodel.WorkTime
             };
 
             var coursemodels = await Task.Factory.StartNew(() => _courseRepo.GetForFooter());

@@ -50,6 +50,7 @@ namespace DegicEducation.Services.Repository
             para.Add("pFacebook", model.Facebook, DbType.String, ParameterDirection.Input);
             para.Add("pDescription", model.Description, DbType.String, ParameterDirection.Input);
             para.Add("pAbout", model.About, DbType.String, ParameterDirection.Input);
+            para.Add("pWorkTime", model.WorkTime, DbType.String, ParameterDirection.Input);
             Execute("updateCompany", para);
         }
     }

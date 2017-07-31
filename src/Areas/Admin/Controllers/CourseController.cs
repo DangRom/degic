@@ -23,7 +23,8 @@ namespace DegicEducation.Areas.Admin.Controllers{
                     Id = c.Id,
                     Name = c.Name,
                     Activated = c.Activated,
-                    Status = c.Status
+                    Status = c.Status,
+                    Orders = c.Orders
                 }).ToList();
                 return View(courses);
             }catch(Exception ex){
@@ -49,7 +50,8 @@ namespace DegicEducation.Areas.Admin.Controllers{
                             ShortDesciptions = course.ShortDescription,
                             Content = course.Content,
                             Activated = course.Activated,
-                            Price = course.Price
+                            Price = course.Price,
+                            Orders = course.Orders
                         };
                         await Task.Factory.StartNew(() => _courseRepo.Insert(coursemodel));
                         return RedirectToAction("New");
@@ -79,7 +81,8 @@ namespace DegicEducation.Areas.Admin.Controllers{
                     ShortDescription = coursemodel.ShortDesciptions,
                     Content = coursemodel.Content,
                     Activated = coursemodel.Activated,
-                    Price = coursemodel.Price
+                    Price = coursemodel.Price,
+                    Orders = coursemodel.Orders
                 };
                 return View(course);
             }catch(Exception ex){
@@ -101,7 +104,8 @@ namespace DegicEducation.Areas.Admin.Controllers{
                         ShortDesciptions = course.ShortDescription,
                         Content = course.Content,
                         Activated = course.Activated,
-                        Price = course.Price   
+                        Price = course.Price   ,
+                        Orders = course.Orders
                     };
                     await Task.Factory.StartNew(() => _courseRepo.Update(coursemodel));
                     return RedirectToAction("Index");

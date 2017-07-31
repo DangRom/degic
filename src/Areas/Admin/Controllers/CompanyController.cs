@@ -33,7 +33,8 @@ namespace DegicEducation.Areas.Admin.Controllers
                     Tweeter = companyModel.Tweeter,
                     Facebook = companyModel.Facebook,
                     Description = companyModel.Description,
-                    About = companyModel.About
+                    About = companyModel.About,
+                    WorkTime = companyModel.WorkTime
                 };
                 return View(company);
             }catch(Exception ex){
@@ -57,7 +58,8 @@ namespace DegicEducation.Areas.Admin.Controllers
                         Tweeter = company.Tweeter,
                         Facebook = company.Facebook,
                         Description = company.Description,
-                        About = company.About
+                        About = company.About,
+                        WorkTime = company.WorkTime
                     };
                     _companyRepo.SaveCompany(companyModel);
                     return RedirectToAction("Index");
