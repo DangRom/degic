@@ -89,7 +89,16 @@
                                                                         <ul class="dropdown">
                                                                             @foreach(var l in @lines)
                                                                             {
-                                                                                <li><a href="page-about-style1.html">@l.Name</a></li>
+                                                                                var llink = "";
+                                                                                if(h.ClassType == true)
+                                                                                {
+                                                                                    llink = "/khoa-hoc/" + l.Alias;
+                                                                                }
+                                                                                else
+                                                                                {
+                                                                                    llink = "/bai-viet/" + l.Alias;
+                                                                                }
+                                                                                <li><a href="@llink">@l.Name</a></li>
                                                                             }
                                                                         </ul>
                                                                     }

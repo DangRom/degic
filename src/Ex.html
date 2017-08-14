@@ -1,0 +1,65 @@
+ <!-- @foreach(var h in headmenus)
+                               {
+                                  var lines = Model.MenuLine.Where(l => l.HeadId == h.Id).ToList();
+                                  if(lines.Count == 0)
+                                  {
+                                       var hlink = "/gioi-thieu/" + @h.Alias;
+                                       <li><a href="@hlink">@h.Name</a></li>
+                                   }
+                                   else
+                                   {
+                                       var hlink = "";
+                                       if(@h.ClassType == true)
+                                       {
+                                           hlink = "/khoa-hoc";
+                                       }
+                                       else
+                                       {
+                                           hlink = "/danh-sach/" + @h.Alias;
+                                       }
+                                       <li><a href="@hlink">@h.Name</a>
+                                             <ul class="dropdown">
+                                                @foreach(var l in lines)
+                                                {
+                                                   var llink = "";
+                                                   if(h.ClassType == true)
+                                                   {
+                                                      llink = "/khoa-hoc/" + l.Alias;
+                                                   }
+                                                   else
+                                                   {
+                                                      llink = "/bai-viet/" + l.Alias;
+                                                   }
+                                                   <li><a href="@llink">@l.Name</a></li>
+                                                }
+                                             </ul>
+                                       </li>
+                                  }
+                               } -->
+
+
+
+
+
+<!--add sub menu-->
+                                        var subs = submenus.Where(s => s.ParrentId == h.Id).ToList();
+                                        if(subs.Count > 0)
+                                        {
+                                            <ul class="dropdown">
+                                                @foreach(var sub in subs)
+                                                {
+                                                    <li><a href="#">@sub.Name</a>
+                                                        var lines = Model.MenuLine.Where(l => l.HeadId == h.Id).ToList();
+                                                        if(lines.Count > 0)                                                        
+                                                        {
+                                                            <ul class="dropdown">
+                                                                @foreach(var l in lines)
+                                                                {
+                                                                    <li><a href="page-about-style1.html">@l.Name</a></li>
+                                                                }
+                                                            </ul>
+                                                        }
+                                                    </li>
+                                                }
+                                            </ul>
+                                        }
