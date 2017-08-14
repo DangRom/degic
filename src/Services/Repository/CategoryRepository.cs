@@ -52,7 +52,17 @@ namespace DegicEducation.Services.Repository{
          return GetById("getCategoryContentByAlias", para);
       }
 
-      public void Insert(CategoryModel model)
+        public IEnumerable<CategoryModel> GetParrents()
+        {
+            return GetAll("getAllParrentCategory", null);
+        }
+
+        public IEnumerable<CategoryModel> GetParrentsForCourse()
+        {
+            return GetAll("getAllParrentCategoryForCourse", null);
+        }
+
+        public void Insert(CategoryModel model)
         {
             var para = GetParams(model);
             Execute("insertCategory", para);
@@ -75,6 +85,7 @@ namespace DegicEducation.Services.Repository{
             para.Add("pActivated", model.Activated, DbType.Boolean, ParameterDirection.Input);
             para.Add("pClassType", model.ClassType, DbType.Boolean, ParameterDirection.Input);
             para.Add("pOrders", model.Orders, DbType.Int32, ParameterDirection.Input);
+            para.Add("pParrentId", model.ParrentId, DbType.Int32, ParameterDirection.Input);
             return para;
         }
     }

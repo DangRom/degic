@@ -23,6 +23,7 @@
                         <th>Hiển thị</th>
                         <th>Khóa học</th>
                         <th>STT</th>
+                        <th>Menu cha</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -32,17 +33,20 @@
                         <th>Hiển thị</th>
                         <th>Khóa học</th>
                         <th>STT</th>
+                        <th>Menu cha</th>
                         <th></th>
                     </tr>
                 </tfoot>
                 <tbody>
                     @foreach (var m in Model)
                     {
+                        var parrent = (@m.ParrentId == 0) ? "true" : null;
                         <tr>
                             <td>@m.Name</td>
                             <td>@m.Activated</td>
                             <td>@m.ClassType</td>
                             <td>@m.Orders</td>
+                            <td>@parrent</td>
                             <td style="text-align: right">
                                 <a class="btn btn-primary fa fa-pencil" href="/admin/category/update/@m.Id"></a>
                                 <a class="btn btn-danger fa fa-trash-o" onclick="del(@m.Id)"></a>

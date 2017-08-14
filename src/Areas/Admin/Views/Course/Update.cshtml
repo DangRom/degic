@@ -36,6 +36,13 @@
                     </div>
                 </div>
                 <div class="form-group">
+                  <label for="khoahoc" class="col-sm-2 control-label">Khóa học</label>
+                  <div class="col-sm-3">
+                        <select asp-for="CourseId" asp-items="ViewBag.ListParrent" class="form-control select-text" id="khoahoc"></select>
+                        <span asp-validation-for="CourseId" class="text-danger"></span>
+                  </div>
+                </div>
+                <div class="form-group">
                     <label for="orders" class="col-sm-2 control-label">STT</label>
                     <div class="col-sm-2">
                         <input asp-for="Orders" class="form-control height-input" id="orders">

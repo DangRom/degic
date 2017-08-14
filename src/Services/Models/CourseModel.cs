@@ -10,5 +10,6 @@ namespace DegicEducation.Services.Models{
         public string Content { get; set; }
         public bool Activated { get; set; }
         public int Orders { get; set; }
+        public int CourseId { get; set; }
     }
 }

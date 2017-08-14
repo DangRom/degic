@@ -25,7 +25,8 @@ namespace DegicEducation.ViewComponents{
                   Id = h.Id,
                   Name = h.Name,
                   Alias = h.Alias,
-                  ClassType = h.ClassType
+                  ClassType = h.ClassType,
+                  ParrentId = h.ParrentId
                }).ToList();
 
                var menulinemodel = await Task.Factory.StartNew(() => _postRepo.GetMenuLine());
@@ -35,18 +36,14 @@ namespace DegicEducation.ViewComponents{
                   Alias = l.Alias
                }).ToList();
 
-               var classtype = menuheadmodel.FirstOrDefault(c => c.ClassType == true);
-               if(classtype != null){
-                  var courseid = classtype.Id;
-                  var coursemodels = _courseRepo.GetAllCourseForMenuLine();
-                  foreach(var c in coursemodels){
-                      var course = new MenuLineViewModel(){
-                        HeadId = courseid,
-                        Name = c.Name,
-                        Alias = c.Alias
-                      };
-                      menuline.Add(course);  
-                  }
+               var coursemodels = await Task.Factory.StartNew(() => _courseRepo.GetAllCourseForMenuLine());
+               foreach(var c in coursemodels){
+                  var course = new MenuLineViewModel(){
+                    HeadId = c.CourseId,
+                    Name = c.Name,
+                    Alias = c.Alias
+                  };
+                  menuline.Add(course);
                }
 
                Commons.SystemVariable.Categorys = menuhead;

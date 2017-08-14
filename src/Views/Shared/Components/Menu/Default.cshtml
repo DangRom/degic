@@ -1,50 +1,123 @@
 @model DegicEducation.Models.MenuViewModel
 
-
+@{
+    var headmenus = Model.MenuHead.Where(h => h.ParrentId == 0).ToList();
+    var submenus = Model.MenuHead.Where(h => h.ParrentId > 0).ToList();
+}
  <div class="header-nav">
                 <div class="header-nav-wrapper navbar-scrolltofixed bg-theme-colored border-bottom-theme-color-2-1px">
                     <div class="container">
                         <nav id="menuzord" class="menuzord bg-theme-colored pull-left flip menuzord-responsive">
                             <ul class="menuzord-menu">
                                <li class="active"><a href="/">Trang chủ</a></li>
-                               @foreach(var h in Model.MenuHead)
-                               {
-                                  var lines = Model.MenuLine.Where(l => l.HeadId == h.Id).ToList();
-                                  if(lines.Count == 0)
-                                  {
-                                       var hlink = "/gioi-thieu/" + @h.Alias;
-                                       <li><a href="@hlink">@h.Name</a></li>
-                                   }
-                                   else
-                                   {
-                                       var hlink = "";
-                                       if(@h.ClassType == true)
-                                       {
-                                           hlink = "/khoa-hoc";
-                                       }
-                                       else
-                                       {
-                                           hlink = "/danh-sach/" + @h.Alias;
-                                       }
-                                       <li><a href="@hlink">@h.Name</a>
-                                             <ul class="dropdown">
-                                                @foreach(var l in lines)
+
+                                @foreach(var h in @headmenus)
+                                {
+                                        <!--add sub menu-->
+                                        var subs = @submenus.Where(s => s.ParrentId == h.Id).ToList();
+                                        {
+                                            if(@subs.Count == 0)
+                                            {
+                                                
+                                                    var single_lines = Model.MenuLine.Where(l => l.HeadId == h.Id).ToList();
+                                                    if(single_lines.Count == 0)
+                                                    {
+                                                        var hlink = "/gioi-thieu/" + @h.Alias;
+                                                        <li><a href="@hlink">@h.Name</a></li>
+                                                    }
+                                                    else
+                                                    {
+                                                        var hlink = "";
+                                                        if(@h.ClassType == true)
+                                                        {
+                                                            hlink = "/khoa-hoc";
+                                                        }
+                                                        else
+                                                        {
+                                                            hlink = "/danh-sach/" + @h.Alias;
+                                                        }
+                                                        <li><a href="@hlink">@h.Name</a>
+                                                                <ul class="dropdown">
+                                                                    @foreach(var l in single_lines)
+                                                                    {
+                                                                        var llink = "";
+                                                                        if(h.ClassType == true)
+                                                                        {
+                                                                            llink = "/khoa-hoc/" + l.Alias;
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            llink = "/bai-viet/" + l.Alias;
+                                                                        }
+                                                                        <li><a href="@llink">@l.Name</a></li>
+                                                                    }
+                                                                </ul>
+                                                        </li>
+                                                    } 
+                                                
+                                            }
+                                            else
+                                            {
+                                                var hlink = "";
+                                                if(h.ClassType == true)
                                                 {
-                                                   var llink = "";
-                                                   if(h.ClassType == true)
-                                                   {
-                                                      llink = "/khoa-hoc/" + l.Alias;
-                                                   }
-                                                   else
-                                                   {
-                                                      llink = "/bai-viet/" + l.Alias;
-                                                   }
-                                                   <li><a href="@llink">@l.Name</a></li>
+                                                    hlink = "/khoa-hoc/";
                                                 }
-                                             </ul>
-                                       </li>
-                                  }
-                               }
+                                                else
+                                                {
+                                                    hlink = "/danh-sach/" + h.Alias;
+                                                }
+                                                <li><a href="@hlink">@h.Name</a>
+                                                    <ul class="dropdown">
+                                                        @foreach(var sub in @subs)
+                                                        {
+                                                            var slink = "";
+                                                            if(sub.ClassType == true)
+                                                            {
+                                                                slink = "#";
+                                                            }
+                                                            else
+                                                            {
+                                                                slink = "/danh-sach/" + sub.Alias;
+                                                            }
+
+                                                            <li><a href="@slink">@sub.Name</a>
+                                                                @{var lines = Model.MenuLine.Where(l => l.HeadId == sub.Id).ToList();}
+                                                                @{
+                                                                    if(lines.Count > 0)                                                        
+                                                                    {
+                                                                        <ul class="dropdown">
+                                                                            @foreach(var l in @lines)
+                                                                            {
+                                                                                <li><a href="page-about-style1.html">@l.Name</a></li>
+                                                                            }
+                                                                        </ul>
+                                                                    }
+                                                                }
+                                                            </li>
+                                                        }
+
+                                                        @{var lines_of_head = Model.MenuLine.Where(l => l.HeadId == h.Id).ToList();}
+                                                        @foreach(var loh in lines_of_head)
+                                                        {
+                                                            var lohlink = "";
+                                                            if(h.ClassType == true)
+                                                            {
+                                                                lohlink = "/khoa-hoc/" + loh.Alias;
+                                                            }
+                                                            else
+                                                            {
+                                                                lohlink = "/bai-viet/" + loh.Alias;
+                                                            }
+                                                            <li><a href="@lohlink">@loh.Name</a></li>
+                                                        }
+                                                    </ul>
+                                                </li>
+                                            }
+                                        }
+                                }
+
+
                                <li class=""><a href="/ve-chung-toi">Về chúng tôi</a></li>
                                <li class=""><a href="/lien-he">Liên hệ</a></li>
                             </ul>

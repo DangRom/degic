@@ -7,6 +7,7 @@ using DegicEducation.Services.IRepository;
 using DegicEducation.Services.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace DegicEducation.Areas.Admin.Controllers{
 
@@ -14,7 +15,23 @@ namespace DegicEducation.Areas.Admin.Controllers{
     [Authorize]
     public class CourseController : Controller{
         private readonly ICourseRepository _courseRepo;
-        public CourseController(ICourseRepository courseRepo) => _courseRepo = courseRepo;
+        private readonly ICategoryRepository _cateRepo;
+
+        private List<SelectListItem> GetAllCourseParrent(){
+            var parrents = _cateRepo.GetParrentsForCourse();
+            var listitem = parrents.Select(l => new SelectListItem{
+                Value = l.Id.ToString(),
+                Text = l.Name
+            }).ToList();
+
+            listitem.Insert(0, new SelectListItem{Value = "0", Text = "--hãy chọn khóa học--"}); 
+            return listitem;
+        }
+
+        public CourseController(ICourseRepository courseRepo, ICategoryRepository cateRepo){
+            _courseRepo = courseRepo;
+            _cateRepo = cateRepo;
+        }
 
         public async Task<IActionResult> Index(){
             try{
@@ -33,13 +50,20 @@ namespace DegicEducation.Areas.Admin.Controllers{
             }
         }
 
-        public IActionResult New(){
-            return View();
+        public async Task<IActionResult> New(){
+            try{
+                ViewBag.ListParrent = await Task.Factory.StartNew(() => GetAllCourseParrent());
+                return View();
+            }catch(Exception ex){
+                ModelState.AddModelError("", ex.Message);
+                return View();
+            }
         }
 
         [HttpPost]
         public async Task<IActionResult> New(CourseViewModel course){
             try{
+                ViewBag.ListParrent = await Task.Factory.StartNew(() => GetAllCourseParrent());
                 if(ModelState.IsValid){
                     if(!_courseRepo.CheckAlias(course.Alias)){
                         var coursemodel = new CourseModel{
@@ -51,7 +75,8 @@ namespace DegicEducation.Areas.Admin.Controllers{
                             Content = course.Content,
                             Activated = course.Activated,
                             Price = course.Price,
-                            Orders = course.Orders
+                            Orders = course.Orders,
+                            CourseId = course.CourseId
                         };
                         await Task.Factory.StartNew(() => _courseRepo.Insert(coursemodel));
                         return RedirectToAction("New");
@@ -67,6 +92,7 @@ namespace DegicEducation.Areas.Admin.Controllers{
 
         public async Task<IActionResult> Update(int id){
             try{
+                ViewBag.ListParrent = await Task.Factory.StartNew(() => GetAllCourseParrent());
                 var coursemodel = await Task.Factory.StartNew(() => _courseRepo.GetCourseById(id));
                 if(coursemodel == null){
                     ModelState.AddModelError("", "không tìm thấy dữ liệu");
@@ -82,7 +108,8 @@ namespace DegicEducation.Areas.Admin.Controllers{
                     Content = coursemodel.Content,
                     Activated = coursemodel.Activated,
                     Price = coursemodel.Price,
-                    Orders = coursemodel.Orders
+                    Orders = coursemodel.Orders,
+                    CourseId = coursemodel.CourseId
                 };
                 return View(course);
             }catch(Exception ex){
@@ -94,6 +121,7 @@ namespace DegicEducation.Areas.Admin.Controllers{
         [HttpPost]
         public async Task<IActionResult> Update(CourseViewModel course){
             try{
+                ViewBag.ListParrent = await Task.Factory.StartNew(() => GetAllCourseParrent());
                 if(ModelState.IsValid){
                     var coursemodel = new CourseModel(){
                         Id = course.Id,
@@ -105,7 +133,8 @@ namespace DegicEducation.Areas.Admin.Controllers{
                         Content = course.Content,
                         Activated = course.Activated,
                         Price = course.Price   ,
-                        Orders = course.Orders
+                        Orders = course.Orders,
+                        CourseId = course.CourseId
                     };
                     await Task.Factory.StartNew(() => _courseRepo.Update(coursemodel));
                     return RedirectToAction("Index");

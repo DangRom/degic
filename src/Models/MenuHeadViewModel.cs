@@ -5,5 +5,6 @@ namespace DegicEducation.Models{
         public string Alias { get; set; }
         public string Image { get; set; }
         public bool ClassType { get; set; }
+        public int ParrentId { get; set; }
     }
 }

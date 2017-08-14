@@ -96,6 +96,7 @@ namespace DegicEducation.Services.Repository{
             para.Add("pContent", model.Content, DbType.String, ParameterDirection.Input);
             para.Add("pActivated", model.Activated, DbType.Boolean, ParameterDirection.Input);
             para.Add("pOrders", model.Orders, DbType.Int32, ParameterDirection.Input);
+            para.Add("pCourseId", model.CourseId, DbType.Int32, ParameterDirection.Input);
             return para;
         }
    }

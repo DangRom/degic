@@ -9,5 +9,6 @@ namespace DegicEducation.Services.Models{
         public bool Activated { get; set; }
         public bool ClassType { get; set; }
         public int Orders { get; set; }
+        public int ParrentId { get; set; }
     }
 }
