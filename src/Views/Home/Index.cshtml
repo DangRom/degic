@@ -15,14 +15,14 @@
             <!-- Section: COURSES -->
             @await Component.InvokeAsync("CourseHomePage")
 
-                        <!-- Divider: testimonials -->
+            <!-- Section: blog -->
+            @await Component.InvokeAsync("PostForHome")
+
+            <!-- Divider: testimonials -->
             @await Component.InvokeAsync("StudentSay")
 
             <!-- Section: Gallery -->
             @await Component.InvokeAsync("OurGallery")
-
-            <!-- Section: blog -->
-            @await Component.InvokeAsync("PostForHome")
 
             <!-- Divider: Clients -->
             @await Component.InvokeAsync("Customer")

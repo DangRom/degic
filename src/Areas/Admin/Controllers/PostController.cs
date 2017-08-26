@@ -131,7 +131,8 @@ namespace DegicEducation.Areas.Admin.Controllers{
                   Activated = post.Activated,
                   HomePage = post.HomePage,
                   CategoryId = post.CategoryId,
-                  Content = post.Content
+                  Content = post.Content,
+                  CreateDate = DateTime.Now
                };
                await Task.Factory.StartNew(() => _postRepository.Update(postmodel));
                return RedirectToAction("Index");
